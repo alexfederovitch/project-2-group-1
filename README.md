@@ -35,7 +35,7 @@ Setting diet goals can be as simple as ‘I want to lose 10 pounds’ or ‘I ne
     * weight
     * goal. 
 
-![home page wireframe](./public/styles/wireframe_intro_page.png)
+![home page wireframe](./public/styles/wireframe_intro_page.PNG)
 
 
 
@@ -47,7 +47,7 @@ Setting diet goals can be as simple as ‘I want to lose 10 pounds’ or ‘I ne
     * account settings 
     * *and potentially workout planner*
 
-![profile wireframe](./public/styles/wireframe_home_profile.png)
+![profile wireframe](./public/styles/wireframe_home_profile.PNG)
 
 
 
@@ -78,7 +78,7 @@ Setting diet goals can be as simple as ‘I want to lose 10 pounds’ or ‘I ne
 * There will be a list of days of the week for the user to meal plan Sunday through Saturday. 
 * *More info is basically just a bonus this is where we can go to another page that will provide more info and a picture of the meal*
 
-![meal plans wireframe](./public/styles/wireframe_mealplanner.png)
+![meal plans wireframe](./public/styles/wireframe_mealplanner.PNG)
 
 ### **Account settings page**
 * will allow the user to modify:
@@ -109,7 +109,7 @@ Setting diet goals can be as simple as ‘I want to lose 10 pounds’ or ‘I ne
 
 ### Table Formats
 
-![tables wireframe](./public/styles/wireframe_tables.png)
+![tables wireframe](./public/styles/wireframe_tables.PNG)
 
 
 
