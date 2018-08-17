@@ -35,6 +35,8 @@ Setting diet goals can be as simple as ‘I want to lose 10 pounds’ or ‘I ne
     * weight
     * goal. 
 
+![home page wireframe](./public/styles/wireframe_intro_page.png)
+
 
 
 ### **Generic profile page** 
@@ -44,6 +46,10 @@ Setting diet goals can be as simple as ‘I want to lose 10 pounds’ or ‘I ne
     * meal planning, 
     * account settings 
     * *and potentially workout planner*
+
+![profile wireframe](./public/styles/wireframe_home_profile.png)
+
+
 
 ### **Meal Planning page**
 * There will be a list of days of the week for the user to meal plan Sunday through Saturday. 
@@ -72,6 +78,8 @@ Setting diet goals can be as simple as ‘I want to lose 10 pounds’ or ‘I ne
 * There will be a list of days of the week for the user to meal plan Sunday through Saturday. 
 * *More info is basically just a bonus this is where we can go to another page that will provide more info and a picture of the meal*
 
+![meal plans wireframe](./public/styles/wireframe_mealplanner.png)
+
 ### **Account settings page**
 * will allow the user to modify:
     * username, 
@@ -80,6 +88,7 @@ Setting diet goals can be as simple as ‘I want to lose 10 pounds’ or ‘I ne
     * weight,
     * goal (bulk or cut fat)
     * Delete account option.
+
 
 ### ** *Workout planning page– API generated list of workouts* **
 * The user will be able to select which body part to work out from list
@@ -97,7 +106,13 @@ Setting diet goals can be as simple as ‘I want to lose 10 pounds’ or ‘I ne
     * Modify sets/reps, and re-order the workouts in the order the user wants. 
 * There will be a option list of the days of the week to plan workouts for a specific day. 
 * *giving the user the ability to view tips/tutorials for the workouts would be a good addition*
-     
+
+### Table Formats
+
+![tables wireframe](./public/styles/wireframe_tables.png)
+
+
+
 ### Timetable/Gantt
 The project is to be executed using the Agile development framework:
 
