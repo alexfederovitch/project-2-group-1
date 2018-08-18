@@ -17,8 +17,29 @@ module.exports = function(app) {
 
   // Delete an example by id
   app.delete("/api/examples/:id", function(req, res) {
-    db.Example.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
+    db.Example.destroy({ where: { id: req.params.id } }).then(function(
+      dbExample
+    ) {
       res.json(dbExample);
+    });
+  });
+
+  //////////////////////////////////////////////////////////////////////////
+  // Create a new 'User'
+  app.post("/api/newUser", function(req, res) {
+    var newUser = {
+      username: req.body.username,
+      password: req.body.password,
+      email: req.body.email,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      currentWeight: req.body.currentWeight,
+      goal: req.body.goal
+    };
+    console.log(req.body);
+
+    db.Users.create(newUser).then(function(dbUsers) {
+      res.json(dbUsers);
     });
   });
 };
