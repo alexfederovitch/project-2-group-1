@@ -43,11 +43,11 @@
         <label for="inputUsername" class="sr-only">Username</label>
         <input id="inputUsername" class="form-control" placeholder="Username" required="" autofocus="" type="input">
         
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input id="inputPassword" class="form-control" placeholder="Password" required="" type="password">
+        <label for="inputPw1" class="sr-only">Password</label>
+        <input id="inputPw1" class="form-control" placeholder="Password" required="" type="password">
 
-        <label for="inputPassword2" class="sr-only">Verify Password</label>
-        <input id="inputPassword2" class="form-control" placeholder="Verify Password" required="" type="password">
+        <label for="inputPw2" class="sr-only">Verify Password</label>
+        <input id="inputPw2" class="form-control" placeholder="Verify Password" required="" type="password">
         
         <label for="inputWeight" class="sr-only">Current Weight (lbs)</label>
         <input id="inputWeight" class="form-control" placeholder="Current Weight (lbs)" required="" autofocus="" type="input">
@@ -110,34 +110,46 @@ $(function() {
     let lastName =  $("#lastName").val().trim();
     let email =  $("#inputEmail").val().trim();
     let username = $("#inputUsername").val().trim();
-    let password = $("#inputPassword").val().trim();
-    let password2 = $("#inputPassword2").val().trim();
+    let pw1 = $("#inputPw1").val().trim();
+    let pw2 = $("#inputPw2").val().trim();
     let currentWeight = $("#inputWeight").val().trim();
     let goal = $("input[name='goalOption']:checked").val()
 
-    console.log(email, username, password, password2, currentWeight, goal)
+    console.log(email, username, pw1, pw2, currentWeight, goal)
 
     const newUserVals = {
       firstName: firstName,
       lastName: lastName,
       email: email,
       username: username,
-      password: password,
-      password2: password2,
+      password: pw1,
+      password2: pw2,
       currentWeight: currentWeight,
       goal: goal
     }
+
+    /////////////\\\\\\\\\\\\\\\
+//VALIDATE that pw1 = pw2 BEFORE sending the POST req!!!!!!
+  ///////////////\\\\\\\\\\\\\\\
 
     // This POST request is sent to the API Routes.JS
     $.ajax("/api/newUser", {
       type: "POST",
       data: newUserVals 
     }).then(
-      function() {
+      function(result) {
+
+        if(result.isworking){ 
+          // Reload the page to get the updated list
+          location.reload() 
+          }else{
+            alert("username already taken")
+          }
+       
+
+       
       
-        // Reload the page to get the updated list
-        location.reload()
-        //console.log("created new user")
+    
       }
     );
   })

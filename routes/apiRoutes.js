@@ -29,17 +29,33 @@ module.exports = function(app) {
   app.post("/api/newUser", function(req, res) {
     var newUser = {
       username: req.body.username,
-      password: req.body.password,
+      pw1: req.body.password,
+      pw2: req.body.password2,
       email: req.body.email,
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       currentWeight: req.body.currentWeight,
       goal: req.body.goal
     };
-    console.log(req.body);
+    console.log(newUser);
+    //console.log(res);
+    //console.log("this happens in the app.post in the apiRouts.js");
 
-    db.Users.create(newUser).then(function(dbUsers) {
-      res.json(dbUsers);
-    });
+    db.Users.create(newUser)
+      .then(function(dbUsers) {
+        console.log("works here");
+        res.json({
+          dbUsers: dbUsers,
+          isworking: true
+        });
+      })
+      .catch(function(err) {
+        // handle error
+        //res.json(err);
+        res.json({
+          isworking: false
+        });
+        console.log("username already exists, pick another username");
+      });
   });
 };
