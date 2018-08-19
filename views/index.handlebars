@@ -1,33 +1,109 @@
-<div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
-          </div>
-          <div class="form-group">
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description" placeholder="Enter Example Description"></textarea>
-          </div>
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+<body>
 
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+    <!-------------- navbar --------------->
+    <header>
+		<div id="flex-header" class="container">
+				<div id="logo"><a href="project1.html">
+					<p>Name of App</p></a>
+				</div>
+		    
+			 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+						 <i class="fa fa-bars">Menu</i>
+			</a>
+			<nav class="topnav" id="myTopnav">
+				<ul> 
+					 <li class="link-class"><a href="account.html">Sign Up</a></li>
+					 <li class="link-class"><a href="login.html">Login</a></li>
+				</ul>
+			</nav>
+	    </div>
+    </header>
+
+
+    <!------------- banner --------------->
+
+   
+    <section id="banner" class="section-height">
+		<div class="container py4">
+			<div id="tagline-block" class="col col-6 py4">	
+				 <h1>Tracking your macronutrients intake is now simple.
+				 </h1>
+			</div>
+		</div>
+	</section>
+	
+	<section class="mobile-tagline container">
+			<h1 class="center">Tracking your macronutrients intake is now simple.
+			</h1>
+	</section>
+
+    <!------------- Description Section --------------->
+
+    <section class="container px2">
+        <div class="mxn2">
+            <div class="mx-auto px3 center">
+                <h2>Want to Gain or Lose Weight?</h2>
+            
+				<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+				
+				
+            </div>
+        </div>
+    </section>
+
+
+    <!------------ footer ---------------->
+  <footer>
+		<div class="px2 py3 container">
+			<div class=" center">
+				<div class="col col-6">
+					<ul class="list-reset">
+						<li>
+							<p class="h3 m0">
+							   Contact
+							</p>
+						</li>
+						<li>
+							<a href="#" class="h5 block">macrosapp@something.com </a>
+						</li>
+						<li>
+							<a href="#" class="h5 block">(555) 555-555 </a>
+						</li>
+						<li>
+							<a href="#" class="h5 block"> </a>
+						</li>
+					</ul>
+				</div>
+		  
+				<div class="col col-6">
+					<ul class="list-reset">
+						<li>
+							<p class="h3 m0">
+								Follow us!
+							</p>
+						</li>
+						<li>
+								<a href="#" class="fa fa-facebook"></a>
+								  
+								<a href="#" class="fa fa-twitter"></a>
+	
+								<a href="#" class="fa fa-instagram"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+    <!------------ Mobile Menu ---------------->
+
+	<script>
+			function myFunction() {
+				var x = document.getElementById("myTopnav");
+				if (x.className === "topnav") {
+					x.className += " responsive";
+				} else {
+					x.className = "topnav";
+				}
+			}
+	</script>

@@ -1,0 +1,102 @@
+  <!-------------- navbar --------------->
+    <header>
+		<div id="flex-header" class="container">
+				<div id="logo"><a href="project1.html">
+					<p>Name of App</p></a>
+				</div>
+		    
+			 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+						 <i class="fa fa-bars">Menu</i>
+			</a>
+			<nav class="topnav" id="myTopnav">
+				<ul> 
+					 <li class="link-class"><a href="account.html">Sign Up</a></li>
+					 <li class="link-class"><a href="login.html">Login</a></li>
+				</ul>
+			</nav>
+	    </div>
+    </header>
+
+
+    <!------------- Form --------------->
+
+
+
+    <section class="container px2">
+        <div class="mxn2">
+            <div class="mx-auto px3 center">
+                <h1>Welcome Back!</h1>
+                <br> 
+            
+                <form>
+                    
+             
+                    <label class="h3" for="username">Username</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="Something"  id="username" name="username" size="39" />   
+                    <br>
+                        
+                    <label class="h3" for="password">Password</label><br> <input  class="mb2" type="text" style="max-width: 100%;" placeholder="Somethinelse" id="password" name="password" size="39" />
+                    <br> 
+                        
+                     <input type="submit" value="Log In" class="button" id="button"/>
+                </form>
+                      
+            </div>
+        </div>
+    </section>
+
+
+    <!------------ footer ---------------->
+  <footer>
+    <div class="px2 py3 container">
+        <div class=" center">
+            <div class="col col-6">
+                <ul class="list-reset">
+                    <li>
+                        <p class="h3 m0">
+                           Contact
+                        </p>
+                    </li>
+                    <li>
+                        <a href="#" class="h5 block">macrosapp@something.com </a>
+                    </li>
+                    <li>
+                        <a href="#" class="h5 block">(555) 555-555 </a>
+                    </li>
+                    <li>
+                        <a href="#" class="h5 block"> </a>
+                    </li>
+                </ul>
+            </div>
+      
+            <div class="col col-6">
+                <ul class="list-reset">
+                    <li>
+                        <p class="h3 m0">
+                            Follow us!
+                        </p>
+                    </li>
+                    <li>
+                            <a href="#" class="fa fa-facebook"></a>
+                              
+                            <a href="#" class="fa fa-twitter"></a>
+
+                            <a href="#" class="fa fa-instagram"></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!------------ Mobile Menu ---------------->
+
+<script>
+        function myFunction() {
+            var x = document.getElementById("myTopnav");
+            if (x.className === "topnav") {
+                x.className += " responsive";
+            } else {
+                x.className = "topnav";
+            }
+        }
+</script>
