@@ -7,7 +7,6 @@ var env = require("dotenv").load();
 var flash = require("connect-flash");
 var session = require("express-session");
 var passport = require("passport");
-var path = require("path");
 
 //Load 'Passport" strategies
 // require('./config/passport')(passport);
