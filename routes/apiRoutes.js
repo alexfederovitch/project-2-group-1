@@ -1,4 +1,6 @@
 var db = require("../models");
+const { check, validationResult } = require('express-validator/check');
+
 
 module.exports = function(app) {
   // Get all examples
