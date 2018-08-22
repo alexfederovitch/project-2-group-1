@@ -163,11 +163,10 @@ $(function() {
       currentWeight: currentWeight,
       goal: goal
     }
-
-    /////////////\\\\\\\\\\\\\\\
+/////////////\\\\\\\\\\\\\\\
 //VALIDATE that pw1 = pw2 BEFORE sending the POST req!!!!!!
   ///////////////\\\\\\\\\\\\\\\
-
+ if (newUserVals.password === newUserVals.password2) {
     // This POST request is sent to the API Routes.JS
     $.ajax("/api/newUser", {
       type: "POST",
@@ -181,12 +180,16 @@ $(function() {
           }else{
             alert("username already taken")
           }
-    
       }
     ).catch(function(err){
       console.log(err)
       console.log(err.responseJSON)
-    }) ;
+    });
+} 
+else {
+  console.log("passwords don't match")
+  alert("passwords don't match")
+  };
 
   })
 
