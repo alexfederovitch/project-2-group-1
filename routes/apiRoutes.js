@@ -42,10 +42,7 @@ module.exports = function(app) {
     //console.log(res);
     //console.log("this happens in the app.post in the apiRouts.js");
     
-      //validation checks 
-      //check(newUser.email).isEmail()
-      //console.log(newUser.email)
-
+      //validation checks
       const errors = validationResult(req);
       if (!errors.isEmpty()) {
         console.log("something went wrong")
