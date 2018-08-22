@@ -2,6 +2,15 @@ require("dotenv").config();
 var express = require("express");
 var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
+//'Requires' for passport setup
+var env = require("dotenv").load();
+var flash = require("connect-flash");
+var session = require("express-session");
+var passport = require("passport");
+var path = require("path");
+
+//Load 'Passport" strategies
+// require('./config/passport')(passport);
 
 var db = require("./models");
 
@@ -22,8 +31,23 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
+//\\\\ required for passport
+app.use(session({ secret: "project2FitnessApp" })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
+//Setting global vars for our Flash messages
+app.use(function(req, res, next){
+  res.locals.success_msg = req.flash("success_msg");
+  res.locals.error_msg = req.flash("error_msg");
+  res.locals.error = req.flash("error");
+  next();
+});
+
+
 // Routes
-require("./routes/apiRoutes")(app);
+//\\\\\\\\note: do i need to import the 'passport' instance from the htmlRoutes.js??
+require("./routes/apiRoutes")(app, passport);
 require("./routes/htmlRoutes")(app);
 
 var syncOptions = { force: false };
