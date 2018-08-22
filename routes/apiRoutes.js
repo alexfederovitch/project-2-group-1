@@ -23,4 +23,56 @@ module.exports = function(app) {
       res.json(dbExample);
     });
   });
+    //////////////////////////////////////////////////////////////////////////
+  // Create a new 'User'
+  app.post("/api/newUser",[check("email").isEmail()],function(req, res) {
+    var newUser = {
+      username: req.body.username,
+      pw1: req.body.password,
+      pw2: req.body.password2,
+      email: req.body.email,
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      currentWeight: req.body.currentWeight,
+      goal: req.body.goal
+    };
+    console.log(newUser);
+    //console.log(res);
+    //console.log("this happens in the app.post in the apiRouts.js");
+    
+      //validation checks 
+      //check(newUser.email).isEmail()
+      //console.log(newUser.email)
+
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        console.log("something went wrong")
+        //console.log(req._validationErrors)
+        const errVal = req._validationErrors[0].param
+        //console.log(req._validationErrors[0].value)
+        const errMsg = req._validationErrors[0].msg
+        console.log(`Error: ${errVal} - ${errMsg}`)   
+        
+        return res.status(422).json({ errors: errors.array() });
+      }
+    
+
+      db.Users.create(newUser)
+      .then(function(dbUsers) {
+        console.log("works here");
+        res.json({
+          dbUsers: dbUsers,
+          isworking: true
+        });
+      })
+      .catch(function(err) {
+        // handle error
+        //res.json(err);
+        //console.log(err)
+        res.json({
+          isworking: false
+        });
+        
+      });
+  });
 };
