@@ -1,9 +1,12 @@
+<!-- style.css -->
+ <link rel="stylesheet" href="/styles/account-style.css" type="text/css">
+ 
  <!-------------- navbar --------------->
     <header>
 		<div id="flex-header" class="container">
-				<div id="logo"><a href="project1.html">
+			<div id="logo"><a href="project1.html">
 					<p>Name of App</p></a>
-				</div>
+			</div>
 		    
 			 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
 						 <i class="fa fa-bars">Menu</i>
@@ -23,38 +26,40 @@
 
 
     <section class="container px2">
-        <div class="mxn2">
-            <div class="mx-auto px3 center">
+            <div class="mx-auto center">
                 <h1>Create Your Account</h1>
                 <br> 
             
-                <form>
+                  <form>
                     
-                    <label class="h3" for="first-name">First Name</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="John" id="first-name" name="first-name" size="39" />
-                    <br>
-
-                    <label class="h3" for="last-name">Last Name</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="Dane" id="last-name" name="last-name" size="39" />
-                    <br>
-
-                    <label class="h3" for="username">Username</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="Something"  id="username" name="username" size="39" />   
-                    <br>
-
-                    <label class="h3" for="weight">Weight in Pounds</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="160" id="weight"  name="weight" size="39"/>   
-                    <br>
-
-                    <label class="h3" for="goal">Goal</label><br> <input type="text" class="mb2" style="max-width: 100%;" placeholder="Slim Down or Bulk Up" id="goal" name="goal" size="39" />   
-                    <br>
-          
-                    <label class="h3" for="email">Email</label><br>  <input type="text" class="mb2" style="max-width: 100%;" placeholder="Email" id="email" name="email" size="39" />
-                     <br>
-                        
-                    <label class="h3" for="password">Password</label><br> <input  class="mb2" type="text" style="max-width: 100%;" placeholder="Somethinelse" id="password" name="password" size="39" />
-                    <br> 
-                        
-                     <input type="submit" value="Join!" class="button" id="button"/>
-                 </form>
-                      
-            </div>
+                        <label class="h3" for="first-name">First Name</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="John" id="first-name" name="first-name" size="39" />
+                        <br>
+    
+                        <label class="h3" for="last-name">Last Name</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="Dane" id="last-name" name="last-name" size="39" />
+                        <br>
+    
+                        <label class="h3" for="username">Username</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="Something"  id="username" name="username" size="39" />   
+                        <br>
+    
+                         <label class="h3" for="password">Password</label><br> <input  class="mb2" type="text" style="max-width: 100%;" placeholder="Somethinelse" id="password" name="password" size="39" />
+                        <br> 
+    
+                        <label class="h3" for="confirm-password">Confirm Password</label><br> <input  class="mb2" type="text" style="max-width: 100%;" placeholder="Somethinelse" id="confirm-password" name="confirm-password" size="39" />
+                        <br> 
+    
+                        <label class="h3" for="email">Email</label><br>  <input type="text" class="mb2" style="max-width: 100%;" placeholder="Email" id="email" name="email" size="39" />
+                         <br>
+    
+                        <label class="h3" for="weight">Your Weight in Pounds</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="160" id="weight"  name="weight" size="39"/>   
+                        <br>
+                        <span class="h3">What's Your Goal?</span><br>
+                        <div class="mt1 mb3">
+                        <label class="radio-inline mr1"><input type="radio" name="goalOption" value="1" checked>Bulk Up</label>
+    
+                        <label class="radio-inline ml1"><input type="radio" name="goalOption" value="0">Slim Down</label> 
+                        </div>
+                         <input type="submit" value="Join!" class="button" id="button"/>
+                     </form>
         </div>
     </section>
 

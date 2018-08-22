@@ -62,29 +62,11 @@ nav {
     color: #0074d9;
 }
 
-/*---------------------------------Button styling--------------------------------- */
+/*---------------------------------Progress Bar styling--------------------------------- */
 
- .button {
-    color: #fff;
-    background-color: #0074d9;
-    font-size: 20px;
-    padding: 5px 100px;
-    border-radius: 5px;
-    border: none;
-    margin-bottom: 20px;
-    vertical-align: middle;
+#progress-bar-calories, #progress-bar-protein, #progress-bar-carbs, #progress-bar-fats   {
+    background-color: #4fbd23;
 }
-
-.button:hover {
-    color: #fff;
-    background-color: #212432;
-} 
-
-.button:active {
-    color: #fff;
-    background-color: #212432;
-} 
-
 
 
 
@@ -149,94 +131,93 @@ p.h3 {
 @media only screen and (max-width: 992px) {
 #logo {
     padding: 20px 35px 20px 35px; 
-    }
+}
 
-nav {
+ nav {
     margin-left: auto;
     margin-right: 30px;
     }
 }
-
-
-@media only screen and (max-width: 576px) {
-
-h1 {
-    font-size: 20px;
-}
-
-.h3 {
-    font-size: 16px;
-}
-
-.h5 {
-     font-size: 12px;
-}
-
-/*---------------------------Mobile Nav CSS--------------------------------- */
-
+    
+@media only screen and (max-width: 768px) {
+    
 nav {
     margin: 0;
 }
-
+        
 .topnav ul {
-     display: none;
-   }
-
+    display: none;
+}
+        
 .container {
-     width: auto;
-   }
-
+    width: auto;
+}
+        
 #flex-header {
-     position: relative;
-     display: block;
-   } 
-
+    position: relative;
+    display: block;
+} 
+        
 .icon {
-     position: absolute;
-     right: 15%;
-     top: 30px;
-   }
-
+    position: absolute;
+    right: 15%;
+    top: 30px;
+}
+        
 #logo {
-     width: 120px;
-     padding: 34px 35px 10px 35px;
-     font-family: 'Georgia', Times, Times New Roman, serif; 
-     font-size: 20px;
-   }
-
+    width: 120px;
+    padding: 34px 35px 10px 35px;
+    font-family: 'Georgia', Times, Times New Roman, serif; 
+    font-size: 20px;
+ }
+        
+        /*---------------------------Mobile Nav CSS--------------------------------- */
+        
 .topnav.responsive ul {
-     display: block;
-     width: 100%;
-     padding-left: 0;
-     margin-bottom: 0;
-   }
-
+    display: block;
+    width: 100%;
+    padding-left: 0;
+    margin-bottom: 0;
+}
+        
 .topnav.responsive ul li {
-     display: block;
-     padding: 3px 0 3px 35px;
-     background-color: #212432;
-   }
-
+    display: block;
+    padding: 3px 0 3px 35px;
+    background-color: #212432;
+}
+        
 .topnav.responsive ul li:active {
-     background-color: #34384e;
-
-   }
-
+    background-color: #34384e;
+        
+}
+        
 .icon {
-     display: inline-block;
-     color: #212432;
-   }
-
+    display: inline-block;
+    color: #212432;
+}
+        
 .link-class {
-     display: block;
-     border-bottom: 1px solid #fff;
-   }
-
+    display: block;
+    border-bottom: 1px solid #fff;
+}
+        
 .link-class:nth-last-child(1){
-     border-style: none;
-   }
-
+    border-style: none;
+}
+        
 .topnav a {
     color: #fff;
-   }
+    }
+}
+    
+@media only screen and (max-width: 576px) {
+    
+h1 {
+    font-size: 20px;
+}
+       
+.h5 {
+    font-size: 12px;
+}
+    
 }

@@ -64,28 +64,51 @@ nav {
 
 /*---------------------------------Button styling--------------------------------- */
 
- .button {
+#submit {
     color: #fff;
     background-color: #0074d9;
-    font-size: 20px;
-    padding: 5px 100px;
+    font-size: 16px;
+    padding: 8px 20px;
     border-radius: 5px;
     border: none;
-    margin-bottom: 20px;
+    margin-left: 10px;
     vertical-align: middle;
 }
 
-.button:hover {
+.day-btn {
+    color: #fff;
+    background-color: #0074d9;
+    font-size: 16px;
+    padding: 6px 20px;
+    border-radius: 5px;
+    border: none;
+    width: 66px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 1px;
+    vertical-align: middle;
+
+}
+
+.macro-data {
+    font-size: 16px;
+    padding: 6px 20px;
+    border-radius: 5px;
+    width: 162px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-bottom: 1px;
+}
+
+#submit:hover, .day-btn:hover {
     color: #fff;
     background-color: #212432;
 } 
 
-.button:active {
+#submit:active, .day-btn:hover {
     color: #fff;
     background-color: #212432;
 } 
-
-
 
 
 /* ---------------------------------social media icons---------------------------------*/
@@ -99,6 +122,7 @@ nav {
     margin: 5px 2px;
     border-radius: 50%; 
 }
+
 
 .fa-facebook {
     background: #3B5998;
@@ -157,86 +181,83 @@ nav {
     }
 }
 
+@media only screen and (max-width: 768px) {
+
+    nav {
+        margin: 0;
+    }
+    
+    .topnav ul {
+         display: none;
+       }
+    
+    .container {
+         width: auto;
+       }
+    
+    #flex-header {
+         position: relative;
+         display: block;
+       } 
+    
+    .icon {
+         position: absolute;
+         right: 15%;
+         top: 30px;
+       }
+    
+    #logo {
+         width: 120px;
+         padding: 34px 35px 10px 35px;
+         font-family: 'Georgia', Times, Times New Roman, serif; 
+         font-size: 20px;
+       }
+    
+    /*---------------------------Mobile Nav CSS--------------------------------- */
+
+    .topnav.responsive ul {
+         display: block;
+         width: 100%;
+         padding-left: 0;
+         margin-bottom: 0;
+       }
+    
+    .topnav.responsive ul li {
+         display: block;
+         padding: 3px 0 3px 35px;
+         background-color: #212432;
+       }
+    
+    .topnav.responsive ul li:active {
+         background-color: #34384e;
+    
+       }
+    
+    .icon {
+         display: inline-block;
+         color: #212432;
+       }
+    
+    .link-class {
+         display: block;
+         border-bottom: 1px solid #fff;
+       }
+    
+    .link-class:nth-last-child(1){
+         border-style: none;
+       }
+    
+    .topnav a {
+        color: #fff;
+       }
+
+}
 
 @media only screen and (max-width: 576px) {
 
-h1 {
-    font-size: 20px;
-}
-
-.h3 {
-    font-size: 16px;
-}
-
+   
 .h5 {
      font-size: 12px;
-}
-
-/*---------------------------Mobile Nav CSS--------------------------------- */
-
-nav {
-    margin: 0;
-}
-
-.topnav ul {
-     display: none;
    }
 
-.container {
-     width: auto;
-   }
-
-#flex-header {
-     position: relative;
-     display: block;
-   } 
-
-.icon {
-     position: absolute;
-     right: 15%;
-     top: 30px;
-   }
-
-#logo {
-     width: 120px;
-     padding: 34px 35px 10px 35px;
-     font-family: 'Georgia', Times, Times New Roman, serif; 
-     font-size: 20px;
-   }
-
-.topnav.responsive ul {
-     display: block;
-     width: 100%;
-     padding-left: 0;
-     margin-bottom: 0;
-   }
-
-.topnav.responsive ul li {
-     display: block;
-     padding: 3px 0 3px 35px;
-     background-color: #212432;
-   }
-
-.topnav.responsive ul li:active {
-     background-color: #34384e;
-
-   }
-
-.icon {
-     display: inline-block;
-     color: #212432;
-   }
-
-.link-class {
-     display: block;
-     border-bottom: 1px solid #fff;
-   }
-
-.link-class:nth-last-child(1){
-     border-style: none;
-   }
-
-.topnav a {
-    color: #fff;
-   }
 }
