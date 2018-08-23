@@ -8,6 +8,9 @@
     "plugins": [
         "prettier"
       ],
+    "parserOptions": {
+        "ecmaVersion": 6
+    },
     "rules": {
         "no-duplicate-case":"error",
         "no-empty":"error",
@@ -18,10 +21,10 @@
         "curly": "error",
         "dot-notation": "error",
         "eqeqeq": "error",
-        "no-empty-function": "error",
+        "no-empty-function": "off",
         "no-multi-spaces": "error",
-        "no-unused-vars": "error",
-        "camelcase": "error",
+        "no-unused-vars": "off",
+        "camelcase": 0,
         "indent": [
             "error",
             2
@@ -39,5 +42,6 @@
             "always"
         ],
         "prettier/prettier": "error"
+        
     }
 }
