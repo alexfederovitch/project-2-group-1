@@ -108,5 +108,17 @@
 				}
 			}
 	</script>
-	<script src="/public/js/index.js"></script>
-
+	<script>
+		$(".navSignup").on('click', function(){
+    		$.ajax({
+        		url: '/signup',
+        		type: 'GET'
+    		})
+		})
+		$(".navLogin").on('click', function(){
+    		$.ajax({
+        		url: '/login',
+        		type: 'GET'
+    		})
+		})  
+	</script>

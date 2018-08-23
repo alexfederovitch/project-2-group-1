@@ -1,17 +1,4 @@
 // Get references to page elements
-$(".navSignup").on("click", function() {
-  console.log("hey");
-  $.ajax({
-    url: "/signup",
-    type: "GET"
-  });
-});
-$(".navLogin").on("click", function() {
-  $.ajax({
-    url: "/login",
-    type: "GET"
-  });
-});
 
 // The API object contains methods for each kind of request we'll make
 var API = {
