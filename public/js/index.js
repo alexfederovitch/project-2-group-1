@@ -1,99 +1,128 @@
 // Get references to page elements
-var $exampleText = $("#example-text");
-var $exampleDescription = $("#example-description");
-var $submitBtn = $("#submit");
-var $exampleList = $("#example-list");
+$(".navSignup").on("click", function() {
+  console.log("hey");
+  $.ajax({
+    url: "/signup",
+    type: "GET"
+  });
+});
+$(".navLogin").on("click", function() {
+  $.ajax({
+    url: "/login",
+    type: "GET"
+  });
+});
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function(example) {
+  saveMeal: function(meal) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
       },
       type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
+      url: "/api/meals",
+      data: JSON.stringify(meal)
     });
   },
-  getExamples: function() {
+
+  deleteMeal: function(id) {
     return $.ajax({
-      url: "api/examples",
-      type: "GET"
-    });
-  },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
+      url: "/api/meals/" + id,
       type: "DELETE"
     });
   }
 };
 
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
-
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
-};
-
-// handleFormSubmit is called whenever we submit a new example
-// Save the new example to the db and refresh the list
-var handleFormSubmit = function(event) {
-  event.preventDefault();
-
-  var example = {
-    text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
-  };
-
-  if (!(example.text && example.description)) {
-    alert("You must enter an example text and description!");
-    return;
-  }
-
-  API.saveExample(example).then(function() {
-    refreshExamples();
-  });
-
-  $exampleText.val("");
-  $exampleDescription.val("");
-};
-
 // handleDeleteBtnClick is called when an example's delete button is clicked
-// Remove the example from the db and refresh the list
 var handleDeleteBtnClick = function() {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function() {
-    refreshExamples();
+  API.deleteMeal(idToDelete).then(function() {
+    console.log("deleted");
+  });
+};
+
+//MODAL
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var modBtn = document.getElementById("modBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+modBtn.onclick = function() {
+  modal.style.display = "block";
+};
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target === modal) {
+    modal.style.display = "none";
+  }
+};
+//MODAL END
+
+//MAKING CUSTOM MEAL
+var handleMealFormSubmit = function(event) {
+  event.preventDefault();
+
+  var meal = {
+    day: document.getElementById("day").value,
+    mealName: $("#mealName")
+      .val()
+      .trim(),
+    servings: $("#servings")
+      .val()
+      .trim(),
+    calories: $("#calories")
+      .val()
+      .trim(),
+    fat: $("#fats")
+      .val()
+      .trim(),
+    carbs: $("#carbs")
+      .val()
+      .trim(),
+    protein: $("#proteins")
+      .val()
+      .trim(),
+    mealOrder: document.getElementById("order").value
+  };
+
+  console.log(meal);
+
+  if (
+    !(
+      meal.day &&
+      meal.mealName &&
+      meal.servings &&
+      meal.calories &&
+      meal.calories &&
+      meal.fat &&
+      meal.carbs &&
+      meal.protein &&
+      meal.mealOrder
+    )
+  ) {
+    alert("Please complete all fields");
+    return;
+  }
+
+  API.saveMeal(meal).then(function() {
+    console.log("saved");
   });
 };
 
 // Add event listeners to the submit and delete buttons
-$submitBtn.on("click", handleFormSubmit);
-$exampleList.on("click", ".delete", handleDeleteBtnClick);
+$("#creatMealBtn").on("click", handleMealFormSubmit);
+$("#deleteMealBtn").on("click", handleDeleteBtnClick);

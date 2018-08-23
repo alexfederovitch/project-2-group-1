@@ -90,9 +90,15 @@ module.exports = function(sequelize, DataTypes) {
       }
     }
   });
+
+  // Associating users with meals
+  // When meals is deleted, also delete any associated meals
+  Users.associate = function(models) {
+    Users.hasMany(models.meals, {
+      onDelete: "cascade"
+    });
+  };
   return Users;
 };
 
-module.exports.createUser = function(newUser, callback) {
-
-};
+module.exports.createUser = function(newUser, callback) {};
