@@ -43,9 +43,10 @@
         		<ul id="meal-list" class="list-group">
           			{{#each meals}}
          				 <li data-id="{{this.id}}" class="list-group-item">
-            				<a href="example/{{this.id}}">{{this.mealName}}</a>
+							<span>Meal:{{this.mealName}} &nbsp Servings:{{this.servings}}</span>
+							<br>
+							<span>Calories:{{this.calories}} &nbsp Protein:{{this.protein}} &nbsp Carbs:{{this.carbs}} &nbsp Fats:{{this.fat}}</span>
             				<button class="btn deleteBtn" id="deleteMealBtn">ｘ</button>
-           				 <span>{{this.mealOrder}}</span>
           				</li>
           			{{/each}}
        			 </ul>
