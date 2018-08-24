@@ -16,14 +16,6 @@ body, h1, h2, label {
   color: #212432;
 }
 
-.list-group-item {
-    line-height: 2.5;
-}
-
-#deleteMealBtn {
-    float: right;
-};
-
 /*---------------------------------Header CSS---------------------------------*/
 
 header {
@@ -72,7 +64,7 @@ nav {
 
 /*---------------------------------Button styling--------------------------------- */
 
-#submit {
+#submit, #modBtn {
     color: #fff;
     background-color: #0074d9;
     font-size: 16px;
@@ -118,15 +110,36 @@ nav {
     background-color: #212432;
 } 
 
-.deleteBtn{
-    background-color: red;
+
+.deleteBtn {
+    background-color: #c00040;
+    padding: 5px 50px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 15px;
+    vertical-align: center;
+}
+
+.eatBtn {
+    background-color: #4fbd23;
+    padding: 5px 52px;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 15px;
+    vertical-align: center;
+}
+
+.change-color {
+    background-color: blue;
 }
 
 /* ---------------------------------social media icons---------------------------------*/
 
 .fa {
     padding: 5px;
-    font-size: 30px;
+    font-size: 20px;
     width: 20px;
     text-align: center;
     text-decoration: none;
