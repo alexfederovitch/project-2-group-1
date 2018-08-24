@@ -29,24 +29,29 @@
     <section class="container clearfix">
 
         <div class="col sm-col-6 p1 border-box border">
-            <div>
-                <div class="col sm-col-6 border day-btn center">S</div>
-                <div class="col sm-col-6 border day-btn center">M</div>
-                <div class="col sm-col-6 border day-btn center">T</div>
-                <div class="col sm-col-6 border day-btn center">W</div>
-                <div class="col sm-col-6 border day-btn center">T</div>
-                <div class="col sm-col-6 border day-btn center">F</div>
-                <div class="col sm-col-6 border day-btn center">S</div>
+            <div class="clearfix mb1">
+                <div class="col sm-col-2 border day-btn center">S</div>
+                <div class="col sm-col-2 border day-btn center">M</div>
+                <div class="col sm-col-2 border day-btn center">T</div>
+                <div class="col sm-col-2 border day-btn center">W</div>
+                <div class="col sm-col-2 border day-btn center">T</div>
+                <div class="col sm-col-2 border day-btn center">F</div>
+                <div class="col sm-col-2 border day-btn center">S</div>
             </div>
 			<div>
 				<h3>Meals:</h3>
         		<ul id="meal-list" class="list-group">
           			{{#each meals}}
-         				 <li data-id="{{this.id}}" class="list-group-item">
-							<span>Meal:{{this.mealName}} &nbsp Servings:{{this.servings}}</span>
-							<br>
-							<span>Calories:{{this.calories}} &nbsp Protein:{{this.protein}} &nbsp Carbs:{{this.carbs}} &nbsp Fats:{{this.fat}}</span>
-            				<button class="btn deleteBtn" id="deleteMealBtn">ｘ</button>
+         				 <li data-id="{{this.id}}" class="clearfix border p1 mb1 list-group-item">
+						<div class="col md-col-9 sm-col-9">
+							<p>Meal: {{this.mealName}} &nbsp Servings: {{this.servings}}</p>
+							
+							<p>Calories: {{this.calories}} &nbsp Protein: {{this.protein}} &nbsp Carbs: {{this.carbs}} &nbsp Fats: {{this.fat}}</p>
+						</div>	 
+						<div class="col md-col-3 sm-col-3">	   
+            				<button class="deleteBtn mb1" id="deleteMealBtn">ｘ</button>
+							<button class="eatBtn" id="eatMealBtn">&#10003;</button>
+						</div>	  	
           				</li>
           			{{/each}}
        			 </ul>
@@ -82,58 +87,12 @@
 
     </section>
 
-    <!------------- Description Section --------------->
-
-  
-
-
-    <!------------ footer ---------------->
-  <footer>
-		<div class="px2 py3 container">
-			<div class=" center">
-				<div class="col col-6">
-					<ul class="list-reset">
-						<li>
-							<p class="h3 m0">
-							   Contact
-							</p>
-						</li>
-						<li>
-							<a href="#" class="h5 block">macrosapp@something.com </a>
-						</li>
-						<li>
-							<a href="#" class="h5 block">(555) 555-555 </a>
-						</li>
-						<li>
-							<a href="#" class="h5 block"> </a>
-						</li>
-					</ul>
-				</div>
-		  
-				<div class="col col-6">
-					<ul class="list-reset">
-						<li>
-							<p class="h3 m0">
-								Follow us!
-							</p>
-						</li>
-						<li>
-								<a href="#" class="fa fa-facebook"></a>
-								  
-								<a href="#" class="fa fa-twitter"></a>
-	
-								<a href="#" class="fa fa-instagram"></a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</div>
-	</footer>
-    <!------------- Modal Popup --------------->
-<h2>Modal Example</h2>
+<!------------- Modal Popup --------------->
+ <section class="container mt1">
+<h2 class="mx-auto">Add Your Meal</h2>
 
 <!-- Trigger/Open The Modal -->
-<button id="modBtn">Open Modal</button>
+<button id="modBtn">Open Your Meal Planner</button>
 
 <!-- The Modal -->
 <div id="myModal" class="modal">
@@ -182,6 +141,52 @@
         </form>
   </div>
 
+  
+</section>
+
+    <!------------ footer ---------------->
+  <footer>
+		<div class="px2 py3 container">
+			<div class=" center">
+				<div class="col col-6">
+					<ul class="list-reset">
+						<li>
+							<p class="h3 m0">
+							   Contact
+							</p>
+						</li>
+						<li>
+							<a href="#" class="h5 block">macrosapp@something.com </a>
+						</li>
+						<li>
+							<a href="#" class="h5 block">(555) 555-555 </a>
+						</li>
+						<li>
+							<a href="#" class="h5 block"> </a>
+						</li>
+					</ul>
+				</div>
+		  
+				<div class="col col-6">
+					<ul class="list-reset">
+						<li>
+							<p class="h3 m0">
+								Follow us!
+							</p>
+						</li>
+						<li>
+								<a href="#" class="fa fa-facebook"></a>
+								  
+								<a href="#" class="fa fa-twitter"></a>
+	
+								<a href="#" class="fa fa-instagram"></a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</footer>
+    
     <!------------ Mobile Menu ---------------->
 
 	<script>
@@ -193,6 +198,10 @@
 					x.className = "topnav";
 				}
 			}
+
+			$("document").on("click", ".eatBtn", function(){
+				$(this).attr({"class": "change-color"})
+			})
 	</script>
 
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
