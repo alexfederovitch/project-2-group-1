@@ -10,10 +10,16 @@ module.exports = function(app) {
   });
   //load Signup page
   app.get("/signup", function(req, res, next) {
+    if (req.user) {
+      res.redirect("/members");
+    }
     res.render("create-account");
   });
   //load Login page
   app.get("/login", function(req, res, next) {
+    if (req.user) {
+      res.redirect("/members");
+    }
     res.render("login");
   });
   // Load meal planner
@@ -45,22 +51,6 @@ module.exports = function(app) {
     res.render("404");
   });
 //////////////////////////////////////////////////////////////////////////////////
-  app.get("/", function(req, res) {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/members");
-    }
-    res.render("create-account");
-  });
-
-  app.get("/login", function(req, res) {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/members");
-    }
-    res.render("login");
-  });
-
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/members", isAuthenticated, function(req, res) {

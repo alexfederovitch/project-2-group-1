@@ -1,14 +1,28 @@
 //Onclick for the Submit Button for th Sign Up
-$("#submitSignUp").on("click", function(event){
+$("#button").on("click", function(event) {
   event.preventDefault();
   //Grab the email and password values
-  let firstName = $("#firstName").val().trim();
-  let lastName = $("#lastName").val().trim();
-  let email = $("#inputEmail").val().trim();
-  let username = $("#inputUsername").val().trim();
-  let pw1 = $("#inputPw1").val().trim();
-  let pw2 = $("#inputPw2").val().trim();
-  let currentWeight = $("#inputWeight").val().trim();
+  let firstName = $("#first-name")
+    .val()
+    .trim();
+  let lastName = $("#last-name")
+    .val()
+    .trim();
+  let email = $("#email")
+    .val()
+    .trim();
+  let username = $("#username")
+    .val()
+    .trim();
+  let pw1 = $("#password")
+    .val()
+    .trim();
+  let pw2 = $("#confirm-password")
+    .val()
+    .trim();
+  let currentWeight = $("#weight")
+    .val()
+    .trim();
   let goal = $("input[name='goalOption']:checked").val();
 
   console.log(email, username, pw1, pw2, currentWeight, goal);
@@ -25,10 +39,10 @@ $("#submitSignUp").on("click", function(event){
   };
 
   /////////////\\\\\\\\\\\\\\\
-    //VALIDATE that pw1 = pw2 BEFORE sending the POST req!!!!!!
+  //VALIDATE that pw1 = pw2 BEFORE sending the POST req!!!!!!
   ///////////////\\\\\\\\\\\\\\\
 
-    if (newUserVals.password === newUserVals.password2) {
+  if (newUserVals.password === newUserVals.password2) {
     // This POST request is sent to the API Routes.JS
     $.ajax("/api/newUser", {
       type: "POST",
@@ -39,19 +53,17 @@ $("#submitSignUp").on("click", function(event){
           console.log(result);
 
           // Reload the page to get the updated list
-          // location.reload() 
+          // location.reload()
         }
       })
       .catch(function(result) {
         //this function is caputring the error and
-      $("#errorAlert").show();
-        console.log(`line 151 on index.handlebars`);;
+        $("#errorAlert").show();
+        console.log("line 151 on index.handlebars");
 
-        console.log(result);;
+        console.log(result);
       });
-    }   else {
+  } else {
     $("#pwErrAlert").show();
   }
-  }
 });
-;
