@@ -1,5 +1,5 @@
 var db = require("../models");
-const { check, validationResult } = require("express-validator/check");
+var passport = require("../config/passport");
 
 module.exports = function(app) {
   // Get all examples
@@ -36,8 +36,16 @@ module.exports = function(app) {
   });
 
   //////////////////////////////////////////////////////////////////////////
-  // Create a new 'User'
-  app.post("/api/newUser", [check("email").isEmail()], function(req, res) {
+  //
+  app.post("/api/login", passport.authenticate("local"), function(req, res) {
+    // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
+    // So we're sending the user back the route to the members page because the redirect will happen on the front end
+    // They won't get this or even be able to access this page if they aren't authed
+    res.json("/members");
+  });
+  //////////////////// Create a new 'User'
+  // app.post("/api/newUser", [check("email").isEmail()], function(req, res) {
+  app.post("/api/newUser", function(req, res) {
     var newUser = {
       username: req.body.username,
       pw1: req.body.password,
@@ -53,33 +61,35 @@ module.exports = function(app) {
     //console.log("this happens in the app.post in the apiRouts.js");
 
     //validation checks
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      console.log("something went wrong");
-      //console.log(req._validationErrors)
-      const errVal = req._validationErrors[0].param;
-      //console.log(req._validationErrors[0].value)
-      const errMsg = req._validationErrors[0].msg;
-      console.log(`Error: ${errVal} - ${errMsg}`);
+    // const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //   console.log("something went wrong");
+    //   //console.log(req._validationErrors)
+    //   const errVal = req._validationErrors[0].param;
+    //   //console.log(req._validationErrors[0].value)
+    //   const errMsg = req._validationErrors[0].msg;
+    //   console.log(`Error: ${errVal} - ${errMsg}`);
 
-      return res.status(422).json({ errors: errors.array() });
-    }
+    //   return res.status(422).json({ errors: errors.array() });
+    // }
 
     db.Users.create(newUser)
       .then(function(dbUsers) {
         console.log("works here");
-        res.json({
-          dbUsers: dbUsers,
-          isworking: true
-        });
+        res.redirect(307, "/api/login");
+        // res.json({
+        //   dbUsers: dbUsers,
+        //   isworking: true
+        // });
       })
       .catch(function(err) {
         // handle error
         //res.json(err);
         //console.log(err)
-        res.json({
-          isworking: false
-        });
+        // res.json({
+        //   isworking: false
+        // });
+        res.json(err);
       });
   });
 };

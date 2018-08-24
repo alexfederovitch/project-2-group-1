@@ -30,25 +30,16 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-//\\\\ required for passport
-app.use(session({ secret: "project2FitnessApp" })); // session secret
+// We need to use sessions to keep track of our user's login status
+app.use(
+  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
+);
 app.use(passport.initialize());
-app.use(passport.session()); // persistent login sessions
-app.use(flash()); // use connect-flash for flash messages stored in session
-//Setting global vars for our Flash messages
-app.use(function(req, res, next){
-  res.locals.success_msg = req.flash("success_msg");
-  res.locals.error_msg = req.flash("error_msg");
-  res.locals.error = req.flash("error");
-  next();
-});
+app.use(passport.session());
 
-
-// Routes
-//\\\\\\\\note: do i need to import the 'passport' instance from the htmlRoutes.js??
-require("./routes/apiRoutes")(app, passport);
-require("./routes/htmlRoutes")(app);
-
+// Requiring our routes
+require("./routes/htmlRoutes.js")(app);
+require("./routes/apiRoutes.js")(app);
 var syncOptions = { force: false };
 
 // If running a test, set syncOptions.force to true
