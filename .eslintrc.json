@@ -26,22 +26,22 @@
         "no-unused-vars": "off",
         "camelcase": 0,
         "indent": [
-            "error",
+            "off",
             2
         ],
         "linebreak-style": [
-            "error",
+            "off",
             "unix"
         ],
         "quotes": [
-            "error",
-            
+            "off",
+            "double"
         ],
         "semi": [
-            "error",
-            
+            "off",
+            "always"
         ],
-        "prettier/prettier": 
+        "prettier/prettier": "off"
         
     }
 }
