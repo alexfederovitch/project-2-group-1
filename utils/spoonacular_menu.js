@@ -1,43 +1,38 @@
-// const request = require('request');
+const request = require('request');
 
 module.exports = function (diet, avoid, callback) {
     let targetCal = 2000;
-    // let diet = "vegetarian";
-    // let avoid = "shellfish%2C+olives";
     let mealsMain = [];
     let mealsSnack = [];
     let mealsIDs = [];
     let mealsAll = [];
     let mealsDetails = [];
-    let mealType = 0;
+    let mealType = "";
 
-    getMains = function (diet,avoid) {
+    getMains = function () {
 
         const mains = {
             url: `https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/mealplans/generate?
             timeFrame=week&targetCalories=${targetCal}&diet=${diet}&exclude=${avoid}`,
             headers: {
-                "X-Mashape-Key": "zsTclNCR1UmshdzJrl8o9Em7Wp2fp17HQXwjsn2mkFmCh3KoFJ",
+                "X-Mashape-Key": process.env.MASH_APIKEY,
                 "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com",
             }
         };
 
         request.get(mains, function (error, response, body) {
-            console.log('error:', error); // Print the error if one occurred
-            console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-
             let mealPlan = JSON.parse(body);
 
             for (n of mealPlan.items) {
                 switch (n.slot) {
                     case 1:
-                        mealType = 2
+                        mealType = "Breakfast"
                         break;
                     case 2:
-                        mealType = 4
+                        mealType = "Lunch"
                         break;
                     case 3:
-                        mealType = 6
+                        mealType = "Dinner"
                         break;
                 }
 
@@ -48,38 +43,35 @@ module.exports = function (diet, avoid, callback) {
                     }
                 )
             }
-            console.log(mealsMain);
+            // console.log(mealsMain);
             getSnacks();
         });
     };
 
-    getSnacks = function (diet,avoid) {
+    getSnacks = function () {
 
         const snacks = {
             url: 'https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/recipes/searchComplex?`' +
                 `limitLicense=false&ranking=2&minCalories=10&maxCalories=200&offset=0&number=20&diet=${diet}&exclude=${avoid}`,
             headers: {
-                "X-Mashape-Key": "zsTclNCR1UmshdzJrl8o9Em7Wp2fp17HQXwjsn2mkFmCh3KoFJ",
+                "X-Mashape-Key": process.env.MASH_APIKEY,
                 "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com",
             }
         };
 
         request.get(snacks, function (error, response, body) {
-            console.log('error:', error); // Print the error if one occurred
-            console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-
             let snackList = JSON.parse(body);
             // console.log(snackList.results[0].id,snackList.results.length)
 
             for (let i = 0; i < snackList.results.length; i++) {
                 mealsSnack.push(
                     {
-                        "mealType": 0,
+                        "mealType": "Snack",
                         "spoontacularID": snackList.results[i].id
                     }
                 )
             }
-            console.log(mealsSnack);
+            // console.log(mealsSnack);
             getDetails();
         });
     };
@@ -89,7 +81,7 @@ module.exports = function (diet, avoid, callback) {
         mealsIDs = mealsAll.map(function (elem) {
             return elem.spoontacularID
         })
-        console.log(mealsIDs)
+        // console.log(mealsIDs)
 
 
         const details = {
@@ -97,22 +89,19 @@ module.exports = function (diet, avoid, callback) {
                 // `ids=576710%2C10341&includeNutrition=true`,
                 `ids=${mealsIDs.join("%2C")}&includeNutrition=true`,
             headers: {
-                "X-Mashape-Key": "zsTclNCR1UmshdzJrl8o9Em7Wp2fp17HQXwjsn2mkFmCh3KoFJ",
+                "X-Mashape-Key": process.env.MASH_APIKEY,
                 "X-Mashape-Host": "spoonacular-recipe-food-nutrition-v1.p.mashape.com",
             }
         };
-        console.log(details);
+        // console.log(details);
 
 
 
 
         request.get(details, function (error, response, body) {
-            console.log('error:', error); // Print the error if one occurred
-            console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
             let detailsList = JSON.parse(body);
-
             for (let i = 0; i < detailsList.length; i++) {
-                console.log(mealsDetails[i])
+                // console.log(mealsDetails[i])
                 mealsDetails[i] = Object.assign(mealsAll[i], {
                     "mealName": detailsList[i].title,
                     "image": detailsList[i].image,
@@ -124,7 +113,8 @@ module.exports = function (diet, avoid, callback) {
 
                 })
             }
+            callback(mealsDetails);
         });
     }
-    callback(mealsDetails);
+    getMains();
 }

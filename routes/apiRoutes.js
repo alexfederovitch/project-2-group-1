@@ -1,6 +1,7 @@
-var db = require("../models");
+const db = require("../models");
 // const request = require('request');
-spoonacular = require('../utils/spoonacular.js')
+spoonMenu = require("../utils/spoonacular_menu");
+
 const { check, validationResult } = require("express-validator/check");
 
 module.exports = function (app) {
@@ -8,30 +9,28 @@ module.exports = function (app) {
   // Get Meal Options from Spoontacular API
   app.get("/api/options", function (req, res) {
     let body = req.query;
-    let diet = [];
-    let avoid = [];
-    for (let n in body) {
+    const diet = [];
+    const avoid = [];
+    for (const n in body) {
       if (n.includes("diet")) {
         diet.push(body[n])
       } else {
         avoid.push(body[n])
       }
     }
-    console.log(diet.join(","), avoid.join(","));
-    spoonacular("vegetarian", "soy", function (result) {
-
-      console.log(res);
-      res.render("meal-planner", { result });
+    spoonMenu(diet.join(","), avoid.join(","), function (options) {
+      res.render("meal-planner", { options });
     })
-
   });
+
   //Get meal search from Spoontacular API
   app.get("/api/search", function (req, res) {
-    db.meals
-      .findAll({ order: [["mealOrder", "ASC"]] })
-      .then(function (userMeals) {
-        res.json(userMeals);
-      });
+    let body = req.query;
+    console.log(body)
+ 
+    spoonSearch(query, function (search) {
+      res.render("meal-planner", { search });
+    })
   });
 
   // Get all examples
