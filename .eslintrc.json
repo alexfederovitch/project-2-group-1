@@ -2,7 +2,7 @@
     "env": {
         "browser": true,
         "commonjs": true,
-        "node": true
+        "node": false
     },
     "extends": "prettier",
     "plugins": [
