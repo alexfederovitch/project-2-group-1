@@ -107,5 +107,17 @@
 					x.className = "topnav";
 				}
 			}
+      
+      		$(".navSignup").on('click', function(){
+    		$.ajax({
+        		url: '/signup',
+        		type: 'GET'
+    		})
+		})
+		$(".navLogin").on('click', function(){
+    		$.ajax({
+        		url: '/login',
+        		type: 'GET'
+    		})
+		}) 
 	</script>
-

@@ -20,6 +20,10 @@ body, h1, h2, label {
     line-height: 2.5;
 }
 
+#deleteMealBtn {
+    float: right;
+};
+
 /*---------------------------------Header CSS---------------------------------*/
 
 header {

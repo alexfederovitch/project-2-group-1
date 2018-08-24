@@ -10,11 +10,11 @@ module.exports = function(app) {
   });
   //load Signup page
   app.get("/signup", function(req, res, next) {
-    res.render("create-account");
+    res.render("create-account", { layout: true });
   });
   //load Login page
   app.get("/login", function(req, res, next) {
-    res.render("login");
+    res.render("login", { layout: true });
   });
   // Load meal planner
   app.get("/user/meal", function(req, res) {
