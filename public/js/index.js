@@ -1,12 +1,12 @@
 // Get references to page elements
-$(".navSignup").on("click", function() {
+$(".navSignup").on("click", function () {
   console.log("hey");
   $.ajax({
     url: "/signup",
     type: "GET"
   });
 });
-$(".navLogin").on("click", function() {
+$(".navLogin").on("click", function () {
   $.ajax({
     url: "/login",
     type: "GET"
@@ -15,7 +15,8 @@ $(".navLogin").on("click", function() {
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveMeal: function(meal) {
+
+  saveMeal: function (meal) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -26,7 +27,7 @@ var API = {
     });
   },
 
-  deleteMeal: function(id) {
+  deleteMeal: function (id) {
     return $.ajax({
       url: "/api/meals/" + id,
       type: "DELETE"
@@ -34,13 +35,26 @@ var API = {
   }
 };
 
+//handleOptionsBtnClick
+const handleOptionsBtnClick = function (event) {
+  // event.preventDefault();
+  console.log("CLICKED");
+  return true;
+};
+$("#options").on("submit", handleOptionsBtnClick);
+
+//handleSearchBtnClick
+let handleSearchBtnClick = function () { };
+//handleAddMealBtnClick
+let handleAddMealBtnClick = function () { };
+
 // handleDeleteBtnClick is called when an example's delete button is clicked
-var handleDeleteBtnClick = function() {
+var handleDeleteBtnClick = function () {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteMeal(idToDelete).then(function() {
+  API.deleteMeal(idToDelete).then(function () {
     console.log("deleted");
   });
 };
@@ -55,17 +69,17 @@ var modBtn = document.getElementById("modBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
-modBtn.onclick = function() {
+modBtn.onclick = function () {
   modal.style.display = "block";
 };
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+span.onclick = function () {
   modal.style.display = "none";
 };
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+window.onclick = function (event) {
   if (event.target === modal) {
     modal.style.display = "none";
   }
@@ -73,7 +87,7 @@ window.onclick = function(event) {
 //MODAL END
 
 //MAKING CUSTOM MEAL
-var handleMealFormSubmit = function(event) {
+var handleMealFormSubmit = function (event) {
   event.preventDefault();
 
   var meal = {
@@ -118,7 +132,7 @@ var handleMealFormSubmit = function(event) {
     return;
   }
 
-  API.saveMeal(meal).then(function() {
+  API.saveMeal(meal).then(function () {
     console.log("saved");
   });
 };
@@ -126,3 +140,6 @@ var handleMealFormSubmit = function(event) {
 // Add event listeners to the submit and delete buttons
 $("#creatMealBtn").on("click", handleMealFormSubmit);
 $("#deleteMealBtn").on("click", handleDeleteBtnClick);
+
+$("#getSearchBtn").on("click", handleSearchBtnClick);
+$("#addMealBtn").on("click", handleAddMealBtnClick);

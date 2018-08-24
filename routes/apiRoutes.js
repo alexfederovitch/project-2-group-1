@@ -1,43 +1,75 @@
 var db = require("../models");
+// const request = require('request');
+spoonacular = require('../utils/spoonacular.js')
 const { check, validationResult } = require("express-validator/check");
 
-module.exports = function(app) {
-  // Get all examples
-  app.get("/api/meals", function(req, res) {
+module.exports = function (app) {
+
+  // Get Meal Options from Spoontacular API
+  app.get("/api/options", function (req, res) {
+    let body = req.query;
+    let diet = [];
+    let avoid = [];
+    for (let n in body) {
+      if (n.includes("diet")) {
+        diet.push(body[n])
+      } else {
+        avoid.push(body[n])
+      }
+    }
+    console.log(diet.join(","), avoid.join(","));
+    spoonacular("vegetarian", "soy", function (result) {
+
+      console.log(res);
+      res.render("meal-planner", { result });
+    })
+
+  });
+  //Get meal search from Spoontacular API
+  app.get("/api/search", function (req, res) {
     db.meals
       .findAll({ order: [["mealOrder", "ASC"]] })
-      .then(function(userMeals) {
+      .then(function (userMeals) {
         res.json(userMeals);
       });
   });
 
-  app.get("/api/meals/:day", function(req, res) {
+  // Get all examples
+  app.get("/api/meals", function (req, res) {
+    db.meals
+      .findAll({ order: [["mealOrder", "ASC"]] })
+      .then(function (userMeals) {
+        res.json(userMeals);
+      });
+  });
+
+  app.get("/api/meals/:day", function (req, res) {
     db.meals
       .findAll({ where: { day: req.params.day } })
-      .then(function(userMeals) {
+      .then(function (userMeals) {
         res.json(userMeals);
       });
   });
 
   // Create a new example
-  app.post("/api/meals", function(req, res) {
-    db.meals.create(req.body).then(function(userMeals) {
+  app.post("/api/meals", function (req, res) {
+    db.meals.create(req.body).then(function (userMeals) {
       res.json(userMeals);
     });
   });
 
   // Delete an example by id
-  app.delete("/api/meals/:id", function(req, res) {
+  app.delete("/api/meals/:id", function (req, res) {
     db.meals
       .destroy({ where: { id: req.params.id } })
-      .then(function(userMeals) {
+      .then(function (userMeals) {
         res.json(userMeals);
       });
   });
 
   //////////////////////////////////////////////////////////////////////////
   // Create a new 'User'
-  app.post("/api/newUser", [check("email").isEmail()], function(req, res) {
+  app.post("/api/newUser", [check("email").isEmail()], function (req, res) {
     var newUser = {
       username: req.body.username,
       pw1: req.body.password,
@@ -66,14 +98,14 @@ module.exports = function(app) {
     }
 
     db.Users.create(newUser)
-      .then(function(dbUsers) {
+      .then(function (dbUsers) {
         console.log("works here");
         res.json({
           dbUsers: dbUsers,
           isworking: true
         });
       })
-      .catch(function(err) {
+      .catch(function (err) {
         // handle error
         //res.json(err);
         //console.log(err)
