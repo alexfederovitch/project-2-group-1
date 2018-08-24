@@ -64,7 +64,7 @@ nav {
 
 /*---------------------------------Button styling--------------------------------- */
 
-#submit, #modBtn {
+#submit, #modBtn, #creatMealBtn {
     color: #fff;
     background-color: #0074d9;
     font-size: 16px;
@@ -113,7 +113,8 @@ nav {
 
 .deleteBtn {
     background-color: #c00040;
-    padding: 5px 50px;
+    padding: 5px;
+    width: 110px;
     border: none;
     border-radius: 5px;
     color: #ffffff;
@@ -123,7 +124,8 @@ nav {
 
 .eatBtn {
     background-color: #4fbd23;
-    padding: 5px 52px;
+    padding: 5px;
+    width: 110px;
     border: none;
     border-radius: 5px;
     color: #ffffff;
@@ -131,9 +133,6 @@ nav {
     vertical-align: center;
 }
 
-.change-color {
-    background-color: blue;
-}
 
 /* ---------------------------------social media icons---------------------------------*/
 
