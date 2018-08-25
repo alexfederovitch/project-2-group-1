@@ -118,14 +118,14 @@ $("#submitLogIn").on("click", function (event) {
   then(function(user){
       console.log("sbviueshouse;ovi")
       console.log(user.user.email)
-   $.get("/api/users/:"+user.user.email).then(function(result){
+   $.get("/api/users/"+user.user.email).then(function(result){
            console.log("this in here");
            console.log(result);
-           localStorage.setItem("id", result.id);
-           localStorage.setItem("email", result.email);
-           localStorage.setItem("username", result.username);
-           localStorage.setItem("firstName", result.firstName);
-           localStorage.setItem("currenWeight", result.currentWeight);
+           localStorage.setItem("id", result[0].id);
+           localStorage.setItem("email", result[0].email);
+           localStorage.setItem("username", result[0].username);
+           localStorage.setItem("firstName", result[0].firstName);
+           localStorage.setItem("currentWeight", result[0].currentWeight);
            window.location.href = '/members/'+ localStorage.id
            window.user = user.user;  
            //window.location.href = `/profile/${localStorage.id}`    
@@ -147,11 +147,11 @@ firebase.auth().onAuthStateChanged(function(user) {
      //   console.log("happens in the create account html")
         //console.log(firebase.auth().currentUser)
        $.get("/api/users/"+user.user.email).then(function(result){
-           localStorage.setItem("id", result.id);
-           localStorage.setItem("email", result.email);
-           localStorage.setItem("username", result.username);
-           localStorage.setItem("firstName", result.firstName);
-           localStorage.setItem("currenWeight", result.currentWeight);
+           localStorage.setItem("id", result[0].id);
+           localStorage.setItem("email", result[0].email);
+           localStorage.setItem("username", result[0].username);
+           localStorage.setItem("firstName", result[0].firstName);
+           localStorage.setItem("currentWeight", result[0].currentWeight);
                
             window.user = user.user;    
             window.location.href = `/api/users/${localStorage.id}` 
