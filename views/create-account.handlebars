@@ -13,8 +13,8 @@
 			</a>
 			<nav class="topnav" id="myTopnav">
 				<ul> 
-					 <li class="link-class"><a href="account.html">Sign Up</a></li>
-					 <li class="link-class"><a href="login.html">Login</a></li>
+					 <li class="link-class"><a href="/signup">Sign Up</a></li>
+					 <li class="link-class"><a href="/login">Login</a></li>
 				</ul>
 			</nav>
 	    </div>
@@ -125,4 +125,16 @@
         }
 </script>
 
+<script>
+
+    firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        console.log(user)
+        console.log("happens in the create account html")
+        //console.log(firebase.auth().currentUser)
+        window.location = '/members/'+ localStorage.id; 
+        window.user = user;
+    }
+});
+</script>
 

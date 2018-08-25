@@ -1,8 +1,5 @@
 var db = require("../models");
 
-// Requiring our custom middleware for checking if a user is logged in
-var isAuthenticated = require("../config/middleware/isAuthenticated");
-
 module.exports = function(app) {
   //load Home page
   app.get("/", function(req, res, next) {
@@ -10,11 +7,11 @@ module.exports = function(app) {
   });
   //load Signup page
   app.get("/signup", function(req, res, next) {
-    res.render("create-account", { layout: true });
+    res.render("create-account");
   });
   //load Login page
   app.get("/login", function(req, res, next) {
-    res.render("login", { layout: true });
+    res.render("login");
   });
   // Load meal planner
   app.get("/user/meal", function(req, res) {
@@ -39,7 +36,9 @@ module.exports = function(app) {
         });
       });
   });
-
+  app.get("/members/:id", function(req, res) {
+    res.render("profile");
+  });
   // Render 404 page for any unmatched routes
   app.get("*", function(_req, res) {
     res.render("404");
@@ -47,7 +46,5 @@ module.exports = function(app) {
 //////////////////////////////////////////////////////////////////////////////////
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/members", isAuthenticated, function(req, res) {
-    res.render("profile");
-  });
+
 };

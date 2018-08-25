@@ -4,12 +4,6 @@ var bodyParser = require("body-parser");
 var exphbs = require("express-handlebars");
 //'Requires' for passport setup
 var env = require("dotenv").load();
-var flash = require("connect-flash");
-var session = require("express-session");
-var passport = require("passport");
-
-//Load 'Passport" strategies
-// require('./config/passport')(passport);
 
 var db = require("./models");
 
@@ -29,13 +23,6 @@ app.engine(
   })
 );
 app.set("view engine", "handlebars");
-
-// We need to use sessions to keep track of our user's login status
-app.use(
-  session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
-);
-app.use(passport.initialize());
-app.use(passport.session());
 
 // Requiring our routes
 require("./routes/htmlRoutes.js")(app);

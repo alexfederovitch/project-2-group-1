@@ -1,5 +1,4 @@
 var db = require("../models");
-var passport = require("../config/passport");
 
 module.exports = function(app) {
   // Get all examples
@@ -37,11 +36,12 @@ module.exports = function(app) {
 
   //////////////////////////////////////////////////////////////////////////
   //
-  app.post("/api/login", passport.authenticate("local"), function(req, res) {
-    // Since we're doing a POST with javascript, we can't actually redirect that post into a GET request
-    // So we're sending the user back the route to the members page because the redirect will happen on the front end
-    // They won't get this or even be able to access this page if they aren't authed
-    res.json("/members");
+  app.get("/api/users/:email", function(req, res) {
+    console.log("this happens in the apiroutes.js");
+    console.log(req);
+     db.Users.findAll({where:{email:req.params.email}}).then(function(result){
+       res.json(result);
+     });
   });
   //////////////////// Create a new 'User'
   // app.post("/api/newUser", [check("email").isEmail()], function(req, res) {
@@ -75,21 +75,20 @@ module.exports = function(app) {
 
     db.Users.create(newUser)
       .then(function(dbUsers) {
-        console.log("works here");
-        res.redirect(307, "/api/login");
-        // res.json({
-        //   dbUsers: dbUsers,
-        //   isworking: true
-        // });
+        res.json({
+          dbUsers: dbUsers,
+          isworking: true
+        });
       })
       .catch(function(err) {
         // handle error
         //res.json(err);
-        //console.log(err)
-        // res.json({
-        //   isworking: false
-        // });
-        res.json(err);
+        console.log(err);
+        res.json({
+          isworking: false,
+          msg: "Username and/or email in use"
+        });
       });
   });
+  /////////////////////////////////////////////////////
 };

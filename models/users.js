@@ -1,6 +1,3 @@
-//Requiring 'bcrypt-nodejs'
-var bcrypt = require("bcrypt-nodejs");
-
 module.exports = function(sequelize, DataTypes) {
   var Users = sequelize.define("Users", {
     username: {
@@ -47,7 +44,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     currentWeight: {
-      type: DataTypes.TINYINT,
+      type: DataTypes.MEDIUMINT,
       allowNull: false,
       validate: {
         len: [2, 3]
@@ -55,35 +52,35 @@ module.exports = function(sequelize, DataTypes) {
     },
     //this has to be a boolean value
     weightGoal: {
-      type: DataTypes.TINYINT,
+      type: DataTypes.MEDIUMINT,
       allowNull: true,
       validate: {
         len: [2, 3]
       }
     },
     caloricBudget: {
-      type: DataTypes.TINYINT,
+      type: DataTypes.MEDIUMINT,
       allowNull: true,
       validate: {
         len: [4, 6]
       }
     },
     carbsBudget: {
-      type: DataTypes.TINYINT,
+      type: DataTypes.MEDIUMINT,
       allowNull: true,
       validate: {
         len: [0, 8]
       }
     },
     fatsBudget: {
-      type: DataTypes.TINYINT,
+      type: DataTypes.MEDIUMINT,
       allowNull: true,
       validate: {
         len: [0, 8]
       }
     },
     proteingBudget: {
-      type: DataTypes.TINYINT,
+      type: DataTypes.MEDIUMINT,
       allowNull: true,
       validate: {
         len: [2, 8]
@@ -99,18 +96,5 @@ module.exports = function(sequelize, DataTypes) {
     });
   };
 
-  // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database
-  Users.associate.validPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
-  };
-  // Hooks are automatic methods that run during various phases of the User Model lifecycle
-  // In this case, before a User is created, we will automatically hash their password
-  Users.hook("beforeCreate", function(user) {
-    user.password = bcrypt.hashSync(
-      user.password,
-      bcrypt.genSaltSync(10),
-      null
-    );
-  });
   return Users;
 };

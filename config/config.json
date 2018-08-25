@@ -1,8 +1,8 @@
 {
   "development": {
     "username": "root",
-    "password": "password",
-    "database": "exampledb",
+    "password": "Athlon64!!",
+    "database": "fitness_db",
     "host": "localhost",
     "dialect": "mysql"
   },

@@ -5,7 +5,7 @@
     <header>
             <div id="flex-header" class="container">
                 <div id="logo"><a href="project1.html">
-                        <p>Name of App</p></a>
+                        <p id="welcomeMsg"></p></a>
                 </div>
                 
                  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -16,7 +16,7 @@
                          <li class="link-class"><a href="meal-planner.html">Meal Planner</a></li>
                          <li class="link-class"><a href="profile.html">Profile</a></li>
                          <li class="link-class"><a href="#">Account Settings</a></li>
-                         <li class="link-class"><a href="#">Sing Out</a></li>
+                         <li class="link-class"><a id="logOut"  >Sign Out</a></li>
                     </ul>
                 </nav>
             </div>
@@ -158,5 +158,6 @@
                 x.className = "topnav";
             }
         }
+        $("#welcomeMsg").html(`Welcome ${localStorage.username}`)
 </script>
 
