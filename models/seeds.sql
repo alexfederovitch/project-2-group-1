@@ -2,8 +2,8 @@
 -- Query: SELECT * FROM fitness_db.users
 -- Date: 2018-08-24 23:15
 */
-INSERT INTO `users` (`id`,`username`,`pw1`,`pw2`,`email`,`firstName`,`lastName`,`currentWeight`,`weightGoal`,`caloricBudget`,`carbsBudget`,`fatsBudget`,`proteingBudget`,`createdAt`,`updatedAt`) VALUES (1,'alxfed','password','password','alexfederovitch@yahoo.com','Alex','Federovitch',290,220,1800,20,20,50,NULL,NULL);
-INSERT INTO `users` (`id`,`username`,`pw1`,`pw2`,`email`,`firstName`,`lastName`,`currentWeight`,`weightGoal`,`caloricBudget`,`carbsBudget`,`fatsBudget`,`proteingBudget`,`createdAt`,`updatedAt`) VALUES (2,'testr','password','password','test@test.com','Test','Account',200,175,2200,20,25,45,NULL,NULL);
+INSERT INTO `users` (`id`,`Username`,`pw1`,`pw2`,`email`,`firstName`,`lastName`,`currentWeight`,`weightGoal`,`caloricBudget`,`carbsBudget`,`fatsBudget`,`proteingBudget`,`createdAt`,`updatedAt`) VALUES (1,'alxfed','password','password','alexfederovitch@yahoo.com','Alex','Federovitch',290,220,1800,20,20,50,NULL,NULL);
+INSERT INTO `users` (`id`,`Username`,`pw1`,`pw2`,`email`,`firstName`,`lastName`,`currentWeight`,`weightGoal`,`caloricBudget`,`carbsBudget`,`fatsBudget`,`proteingBudget`,`createdAt`,`updatedAt`) VALUES (2,'testr','password','password','test@test.com','Test','Account',200,175,2200,20,25,45,NULL,NULL);
 
 /*
 -- Query: SELECT * FROM fitness_db.meals

@@ -7,11 +7,11 @@ module.exports = function (app) {
   });
   //load Signup page
   app.get("/signup", function (req, res, next) {
-    res.render("create-account", { layout: true });
+    res.render("create-account");
   });
   //load Login page
   app.get("/login", function (req, res, next) {
-    res.render("login", { layout: true });
+    res.render("login");
   });
 
   //LOAD meal planner
