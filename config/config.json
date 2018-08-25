@@ -1,7 +1,11 @@
 {
   "development": {
     "username": "root",
+<<<<<<< Updated upstream
     "password": "password",
+=======
+    "password": "Krissia1997!",
+>>>>>>> Stashed changes
     "database": "fitness_db",
     "host": "localhost",
     "dialect": "mysql"
