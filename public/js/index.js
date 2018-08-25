@@ -133,7 +133,6 @@ const handleOptionsBtnClick = function () {
 const handleAddMealClick = function (event) {
   event.preventDefault();
   const mealId = $(this).attr("name");
-  console.log(mealId);
   const meal = {
     day: $(`#day-${mealId}`).val().trim(),
     mealName: $(`#title-${mealId}`).attr("value"),
@@ -144,17 +143,22 @@ const handleAddMealClick = function (event) {
     protein: $(`#protein-${mealId}`).attr("value"),
     mealOrder: $(`#order-${mealId}`).val().trim()
   };
-
+  
   API.saveMeal(meal).then(function () {
     console.log("saved");
   });
 };
 
 //SEARCH MEAL
-const handleSearchBtnClick = function (event) {
-  event.preventDefault();
-console.log("CLICKED")
+const handleSearchBtnClick = function () {
+  return true;
 };
+
+//GET DAY FROM DAY BUTTONS
+const handleGetDayBtnClick = function (){
+  event.preventDefault();
+  const day = $(this).attr("name");
+}
 
 // Add event listeners to the submit and delete buttons
 $("#creatMealBtn").on("click", handleMealFormSubmit);
@@ -162,4 +166,5 @@ $("#deleteMealBtn").on("click", handleDeleteBtnClick);
 $("#meal-options").on("click", handleOptionsBtnClick);
 $("#meal-search").on("click", handleSearchBtnClick);
 $(document).on("click", ".add-meal-btn", handleAddMealClick);
+$(".day-btn").on("click", handleGetDayBtnClick);
 
