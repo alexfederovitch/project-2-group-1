@@ -1,205 +1,345 @@
- <!-- style.css -->
-    <link rel="stylesheet" href="/styles/meal-planner.css" type="text/css">
+<!-- style.css -->
+<link rel="stylesheet" href="/styles/meal-planner.css" type="text/css">
 
-    <!-------------- navbar --------------->
-    <header>
-		<div id="flex-header" class="container">
-			<div id="logo"><a href="project1.html">
-					<p>Name of App</p></a>
-			</div>
-		    
-			 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-						 <i class="fa fa-bars">Menu</i>
-			</a>
-			<nav class="topnav" id="myTopnav">
-				<ul> 
-					 <li class="link-class"><a href="meal-planner.html">Meal Planner</a></li>
-                     <li class="link-class"><a href="profile.html">Profile</a></li>
-                     <li class="link-class"><a href="#">Account Settings</a></li>
-                     <li class="link-class"><a href="#">Sing Out</a></li>
-				</ul>
-			</nav>
-	    </div>
-    </header>
+<!-------------- navbar --------------->
+<header>
+	<div id="flex-header" class="container">
+		<div id="logo"><a href="project1.html">
+				<p>Name of App</p></a>
+		</div>
+
+		<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+			<i class="fa fa-bars">Menu</i>
+		</a>
+		<nav class="topnav" id="myTopnav">
+			<ul>
+				<li class="link-class"><a href="meal-planner.html">Meal Planner</a></li>
+				<li class="link-class"><a href="profile.html">Profile</a></li>
+				<li class="link-class"><a href="#">Account Settings</a></li>
+				<li class="link-class"><a href="#">Sing Out</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
 
 
-    <!------------- banner --------------->
+<!------------- banner --------------->
 
-   
-    <section class="container clearfix">
 
-        <div class="col sm-col-6 p1 border-box border">
-            <div class="clearfix mb1">
-                <div class="col sm-col-2 border day-btn center">S</div>
-                <div class="col sm-col-2 border day-btn center">M</div>
-                <div class="col sm-col-2 border day-btn center">T</div>
-                <div class="col sm-col-2 border day-btn center">W</div>
-                <div class="col sm-col-2 border day-btn center">T</div>
-                <div class="col sm-col-2 border day-btn center">F</div>
-                <div class="col sm-col-2 border day-btn center">S</div>
-            </div>
-			<div>
-				<h3>Meals:</h3>
-        		<ul id="meal-list" class="list-group">
-          			{{#each meals}}
-         				 <li data-id="{{this.id}}" class="clearfix border p1 mb1 list-group-item">
-						<div class="col md-col-9 sm-col-9">
-							<p>Meal: {{this.mealName}} &nbsp Servings: {{this.servings}}</p>
-							
-							<p>Calories: {{this.calories}} &nbsp Protein: {{this.protein}} &nbsp Carbs: {{this.carbs}} &nbsp Fats: {{this.fat}}</p>
-						</div>	 
-						<div class="col md-col-3 sm-col-3">	   
-            				<button class="deleteBtn mb1" id="deleteMealBtn">ｘ</button>
-							<button class="eatBtn" id="eatMealBtn">&#10003;</button>
-						</div>	  	
-          				</li>
-          			{{/each}}
-       			 </ul>
-			</div>			
-        </div>
+<section class="container clearfix">
 
-        <div class="col sm-col-6 p1 border-box border">
-             <form>
-               <input type="text" size="25" placeholder="Search.." name="search">
-               <button type="submit" id="submit">Submit</button>
-			 </form>
-			 
-			 <div>
-				<!-- {{#each meal}}
-					
-				{{/each}} -->
-			 </div>
-        </div>
-
-      
-	</section>
-    <section class="container mt1">
-            <div class="clearfix border p1">
-                    <div class="sm-col-8 clearfix mx-auto center">
-						<p>Totals:</p>
-                        <div class="col sm-col-4 border macro-data">Calories: <span> 20</span> </div>
-                        <div class="col sm-col-4 border macro-data">Carbs: <span> 35</span> </div>
-                        <div class="col sm-col-4 border macro-data">Protein: <span> 50</span> </div>
-						<div class="col sm-col-4 border macro-data">Fats: <span> 22</span> </div>
-					</div>
-                
-            </div>
-
-    </section>
-
-<!------------- Modal Popup --------------->
-<section class="container mt1">
-  <div class="center mb3">
-	<h2>Add Your Meal</h2>
-	<!-- Trigger/Open The Modal -->
-	<button id="modBtn">Open Custom Meal</button>
-  </div>
-<!-- The Modal -->
-<div id="myModal" class="modal">
-
-  <!-- Modal content -->
-	<div class="modal-content">
-		<span class="close">&times;</span>
-		<p>INPUT FOOD</p>
-			<form action="/action_page.php">
-			<h3>Day</h3>
-			<select id="day">
-				<option value="sunday">Sunday</option>
-				<option value="monday">Monday</option>
-				<option value="tuesday">Tuesday</option>
-				<option value="wednesday">Wednesday</option>
-				<option value="thursday">Thursday</option>
-				<option value="friday">Friday</option>
-				<option value="saturday">Saturday</option>
-			</select>
-			
-			<br><br>
-			<label class="h3" for="meal-name">Meal Name</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="Steak" id="mealName" name="meal-name" size="39" />
-			<br>
-			<label class="h3" for="servings">Servings</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="1" id="servings" name="servings" size="39" />
-			<br>
-			<label class="h3" for="calories">Calories</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="100"  id="calories" name="calories" size="39" />   
-			<br>
-			<label class="h3" for="fats">Fat</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="100" id="fats"  name="fats" size="39"/>   
-			<br>  
-			<label class="h3" for="carbs">Carbs</label><br>  <input type="text" class="mb2" style="max-width: 100%;" placeholder="100" id="carbs" name="carbs" size="39" />
-			<br>             
-			<label class="h3" for="proteins">Protein</label><br> <input  class="mb2" type="text" style="max-width: 100%;" placeholder="100" id="proteins" name="proteins" size="39" />
-			<br><br>
-				<h3>Type of Meal</h3>
-				<select id="order">
-				<option value="1">Snack Before Breakfast</option>
-				<option value="2">Breakfast</option>
-				<option value="3">Snack Before Lunch</option>
-				<option value="4">Lunch</option>
-				<option value="5">Snack before Dinner</option>
-				<option value="6">Dinner</option>
-				<option value="7">Latenight Snack</option>
-			</select> 
-			<br><br><br>             
-			<input type="submit" value="Add Meal" class="button" id="creatMealBtn"/>
-			</form>
+	<div class="col sm-col-6 p1 border-box border">
+		<div>
+			<div class="col sm-col-6 border day-btn center">S</div>
+			<div class="col sm-col-6 border day-btn center">M</div>
+			<div class="col sm-col-6 border day-btn center">T</div>
+			<div class="col sm-col-6 border day-btn center">W</div>
+			<div class="col sm-col-6 border day-btn center">T</div>
+			<div class="col sm-col-6 border day-btn center">F</div>
+			<div class="col sm-col-6 border day-btn center">S</div>
+		</div>
+		<div>
+			<h3>Meals:</h3>
+			<ul id="meal-list" class="list-group">
+				{{#each meals}}
+				<li data-id="{{this.id}}" class="list-group-item">
+					<a href="example/{{this.id}}">{{this.mealName}}</a>
+					<button class="btn deleteBtn" id="deleteMealBtn">ｘ</button>
+					<span>{{this.mealOrder}}</span>
+				</li>
+				{{/each}}
+			</ul>
+		</div>
 	</div>
 
-  
+	<div class="col sm-col-6 p1 border-box border">
+		<div>
+			<h3>
+				Get Started: Find Meals
+			</h3>
+			<div class="row">
+				<form id="meal-options" name="options" action="/api/options" method="get" class="col sm-col-12 p1 border-box border">
+					<div class="flex flex-wrap col sm-col-12 p1 border-box border mx-auto">
+						<div class="col sm-col-12 primary">
+							Indicate any dietary restriction:
+						</div>
+						<label>
+							<input id="vegetarian" name="diet1" value="vegetarian" type="checkbox"> vegetarian
+						</label>
+						<label>
+							<input id="pescetarian" name="diet2" value="pescetarian" type="checkbox"> pescetarian
+						</label>
+						<label>
+							<input id="lacto-vegetarian" name="diet3" value="lacto vegetarian" type="checkbox"> lacto vegetarian
+						</label>
+						<label>
+							<input id="ovo-vegetarian" name="diet4" value="ovo vegetarian" type="checkbox"> ovo vegetarian
+						</label>
+						<label>
+							<input id="vegan" name="diet5" value="vegan" type="checkbox"> vegan
+						</label>
+						<label>
+							<input id="paleo" name="diet6" value="paleo" type="checkbox"> paleo
+						</label>
+						<label>
+							<input id="primal" name="diet7" value="primal" type="checkbox"> primal
+						</label>
+					</div>
+					<div class="col sm-col-12 p1 border-box border mx-auto">
+						<div class="col sm-col-12 primary">
+							Indicate any foods to avoid:
+						</div>
+						<label>
+							<input id="dairy" name="dairy" value="dairy" type="checkbox"> no dairy
+						</label>
+						<label>
+							<input id="egg" name="egg" value="egg" type="checkbox"> no egg
+						</label>
+						<label>
+							<input id="gluten" name="gluten" value="gluten" type="checkbox"> no gluten
+						</label>
+						<label>
+							<input id="peanut" name="peanut" value="peanut" type="checkbox"> no peanut
+						</label>
+						<label>
+							<input id="sesame" name="sesame" value="sesame" type="checkbox"> no sesame
+						</label>
+						<label>
+							<input id="seafood" name="seafood" value="seafood" type="checkbox"> no seafood
+						</label>
+						<label>
+							<input id="shellfish" name="shellfish" value="shellfish" type="checkbox"> no shellfish
+						</label>
+						<label>
+							<input id="soy" name="soy" value="soy" type="checkbox"> no soy
+						</label>
+						<label>
+							<input id="wheat" name="wheat" value="wheat" type="checkbox"> no wheat
+						</label>
+					</div>
+			</div>
+			<div class="col sm-col-12 p1 border-box border">
+				<button type="submit" id="getOptionsBtn" class="align-middle">Generate New Meal Suggestions</button>
+			</div>
+			</form>
+		</div>
+		<div>
+			<form>
+				<input type="text" size="25" placeholder="Search.." name="search">
+				<button type="submit" id="search-meal">Submit</button>
+			</form>
+		</div>
+		<div class="row">
+			<h3>Suggested Meals:</h3>
+			<div>
+				<span id="search-header"></span>
+
+			</div>
+			<div>
+				<span id="breakfast-header"></span>
+				<ul>
+					{{#each options}}
+					<li>
+						
+							<div class="clearfix mxn2 border">
+								<div>
+									<div class="sm-col sm-col-6 md-col-5 lg-col-4 px2">
+										<h3 name="title">{{mealType}}</h3>
+										<img src={{image}} class="mb2" />
+									</div>
+									<div class="sm-col sm-col-6 md-col-7 lg-col-8 px2">
+										<div class="border">
+											<h3 id="title-{{spoontacularID}}" value="{{mealName}}">{{mealName}}</h3>
+											<a href={{url}} class="btn btn-primary align-middle" target="_blank">More Info</a>
+											<div class="col sm-col-12 flex flex-justify">
+												<div id="cal-{{spoontacularID}}" value="{{calories}}">Calories: {{calories}} </div>
+												<div id="fat-{{spoontacularID}}" value="{{calories}}">Fat: {{fat}} </div>
+												<div id="carbs-{{spoontacularID}}" value="{{calories}}">Carbs: {{carbs}} </div>
+												<div id="protein-{{spoontacularID}}" value="{{calories}}">Protein: {{protein}} </div>
+											</div>
+										</div>
+									</div>
+								</div>
+
+								<div class="border">
+										<div class="col sm-col-12 flex flex-start align-middle">
+											<div>
+												<h4>Eat on:</h4>
+												<select id="day-{{spoontacularID}}">
+													<option value="sunday ">Sunday</option>
+													<option value="monday ">Monday</option>
+													<option value="tuesday ">Tuesday</option>
+													<option value="wednesday ">Wednesday</option>
+													<option value="thursday ">Thursday</option>
+													<option value="friday ">Friday</option>
+													<option value="saturday ">Saturday</option>
+												</select>
+											</div>
+											<div>
+												<h4>As:</h4>
+												<select id="order-{{spoontacularID}}">
+													<option value="1 ">Snack Before Breakfast</option>
+													<option value="2 ">Breakfast</option>
+													<option value="3 ">Snack Before Lunch</option>
+													<option value="4 ">Lunch</option>
+													<option value="5 ">Snack before Dinner</option>
+													<option value="6 ">Dinner</option>
+													<option value="7 ">Latenight Snack</option>
+												</select>
+												<div>
+													  <button type="button" class="add-meal-btn btn btn-primary block" name={{spoontacularID}} >Add to Calendar</button>
+													{{!-- <input name={{spoontacularID}} value="Add to Calendar" class="add-meal btn btn-primary block" /> --}}
+
+												</div>
+
+											</div>
+
+										</div>
+								</div>
+
+							</div>
+					
+					</li>
+					{{/each}}
+
+				</ul>
+
+
+			</div>
+
+		</div>
+
+
+</section>
+<section class="container mt1 ">
+	<div class="clearfix border p1 ">
+		<div class="sm-col-8 clearfix mx-auto center ">
+			<p>Totals:</p>
+			<div class="col sm-col-4 border macro-data ">Calories: <span> 20</span> </div>
+			<div class="col sm-col-4 border macro-data ">Carbs: <span> 35</span> </div>
+			<div class="col sm-col-4 border macro-data ">Protein: <span> 50</span> </div>
+			<div class="col sm-col-4 border macro-data ">Fats: <span> 22</span> </div>
+		</div>
+
+	</div>
+
 </section>
 
-    <!------------ footer ---------------->
-  <footer>
-		<div class="px2 py3 container">
-			<div class=" center">
-				<div class="col col-6">
-					<ul class="list-reset">
-						<li>
-							<p class="h3 m0">
-							   Contact
-							</p>
-						</li>
-						<li>
-							<a href="#" class="h5 block">macrosapp@something.com </a>
-						</li>
-						<li>
-							<a href="#" class="h5 block">(555) 555-555 </a>
-						</li>
-						<li>
-							<a href="#" class="h5 block"> </a>
-						</li>
-					</ul>
-				</div>
-		  
-				<div class="col col-6">
-					<ul class="list-reset">
-						<li>
-							<p class="h3 m0">
-								Follow us!
-							</p>
-						</li>
-						<li>
-								<a href="#" class="fa fa-facebook"></a>
-								  
-								<a href="#" class="fa fa-twitter"></a>
-	
-								<a href="#" class="fa fa-instagram"></a>
-						</li>
-					</ul>
-				</div>
+<!------------- Description Section --------------->
+
+
+
+
+<!------------ footer ---------------->
+<footer>
+	<div class="px2 py3 container ">
+		<div class=" center ">
+			<div class="col col-6 ">
+				<ul class="list-reset ">
+					<li>
+						<p class="h3 m0 ">
+							Contact
+						</p>
+					</li>
+					<li>
+						<a href="# " class="h5 block ">macrosapp@something.com </a>
+					</li>
+					<li>
+						<a href="# " class="h5 block ">(555) 555-555 </a>
+					</li>
+					<li>
+						<a href="# " class="h5 block "> </a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="col col-6 ">
+				<ul class="list-reset ">
+					<li>
+						<p class="h3 m0 ">
+							Follow us!
+						</p>
+					</li>
+					<li>
+						<a href="# " class="fa fa-facebook "></a>
+
+						<a href="# " class="fa fa-twitter "></a>
+
+						<a href="# " class="fa fa-instagram "></a>
+					</li>
+				</ul>
 			</div>
 		</div>
-	</footer>
-    
-    <!------------ Mobile Menu ---------------->
+	</div>
+</footer>
+<!------------- Modal Popup --------------->
+<h2>Modal Example</h2>
+
+<!-- Trigger/Open The Modal -->
+<button id="modBtn ">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal " class="modal ">
+
+	<!-- Modal content -->
+	<div class="modal-content ">
+		<span class="close ">&times;</span>
+		<p>INPUT FOOD</p>
+		<form name="custom " action="/action_page.php ">
+			<h3>Day</h3>
+			<select id="day ">
+				<option value="sunday ">Sunday</option>
+				<option value="monday ">Monday</option>
+				<option value="tuesday ">Tuesday</option>
+				<option value="wednesday ">Wednesday</option>
+				<option value="thursday ">Thursday</option>
+				<option value="friday ">Friday</option>
+				<option value="saturday ">Saturday</option>
+			</select>
+
+			<br><br>
+			<label class="h3 " for="meal-name ">Meal Name</label><br> <input class="mb2 " type="text " style="max-width: 100%;
+					 " placeholder="Steak " id="mealName " name="meal-name " size="39 " />
+			<br>
+			<label class="h3 " for="servings ">Servings</label><br> <input class="mb2 " type="text " style="max-width: 100%;
+					 " placeholder="1 " id="servings " name="servings " size="39 " />
+			<br>
+			<label class="h3 " for="calories ">Calories</label><br> <input class="mb2 " type="text " style="max-width: 100%;
+					 " placeholder="100 " id="calories " name="calories " size="39 " />
+			<br>
+			<label class="h3 " for="fats ">Fat</label><br> <input class="mb2 " type="text " style="max-width: 100%;
+					 " placeholder="100 " id="fats " name="fats " size="39 " />
+			<br>
+			<label class="h3 " for="carbs ">Carbs</label><br> <input type="text " class="mb2 " style="max-width: 100%;
+					 " placeholder="100 " id="carbs " name="carbs " size="39 " />
+			<br>
+			<label class="h3 " for="proteins ">Protein</label><br> <input class="mb2 " type="text " style="max-width: 100%;
+					 " placeholder="100 " id="proteins " name="proteins " size="39 " />
+			<br><br>
+			<h3>Type of Meal</h3>
+			<select id="order ">
+				<option value="1 ">Snack Before Breakfast</option>
+				<option value="2 ">Breakfast</option>
+				<option value="3 ">Snack Before Lunch</option>
+				<option value="4 ">Lunch</option>
+				<option value="5 ">Snack before Dinner</option>
+				<option value="6 ">Dinner</option>
+				<option value="7 ">Latenight Snack</option>
+			</select>
+			<br><br><br>
+			<input type="submit" value="Add Meal" class="button" id="creatMealBtn" />
+		</form>
+	</div>
+
+	<!------------ Mobile Menu ---------------->
 
 	<script>
-			function myFunction() {
-				var x = document.getElementById("myTopnav");
-				if (x.className === "topnav") {
-					x.className += " responsive";
-				} else {
-					x.className = "topnav";
-				}
+		function myFunction() {
+			var x = document.getElementById("myTopnav ");
+			if (x.className === "topnav ") {
+				x.className += " responsive ";
+			} else {
+				x.className = "topnav ";
 			}
-			$(document).on("click", ".eatBtn", function(){
-				$(this).css("background-color", "gray").text("Yummy!");
-			})
+		}
 	</script>
-

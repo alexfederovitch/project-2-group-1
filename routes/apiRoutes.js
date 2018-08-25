@@ -1,7 +1,37 @@
-var db = require("../models");
+const db = require("../models");
+// const request = require('request');
+spoonMenu = require("../utils/spoonacular_menu");
+
 const { check, validationResult } = require("express-validator/check");
 
 module.exports = function(app) {
+  // Get Meal Options from Spoontacular API
+  app.get("/api/options", function(req, res) {
+    let body = req.query;
+    const diet = [];
+    const avoid = [];
+    for (const n in body) {
+      if (n.includes("diet")) {
+        diet.push(body[n]);;
+      } else {
+        avoid.push(body[n]);;
+      }
+    }
+    spoonMenu(diet.join(","), avoid.join(","), function(options) {
+      res.render("meal-planner", { options });
+    });;
+  });
+
+  //Get meal search from Spoontacular API
+  app.get("/api/search", function(req, res) {
+    let body = req.query;
+    console.log(body);;
+
+    spoonSearch(query, function(search) {
+      res.render("meal-planner", { search });
+    });;
+  });
+
   // Get all examples
   app.get("/api/meals", function(req, res) {
     db.meals
@@ -72,7 +102,7 @@ module.exports = function(app) {
           dbUsers: dbUsers,
           isworking: true
         });
-      })
+      });
       .catch(function(err) {
         // handle error
         //res.json(err);
