@@ -1,12 +1,44 @@
+//Add functions for day of the week listeners
+function toSunday() {
+  location.href = "/user/meal/sunday";
+}
+
+function toMonday() {
+  location.href = "/user/meal/monday";
+}
+
+function toTuesday() {
+  location.href = "/user/meal/tuesday";
+}
+
+function toWednesday() {
+  location.href = "/user/meal/wednesday";
+}
+
+function toThursday() {
+  location.href = "/user/meal/thursday";
+}
+
+function toFriday() {
+  location.href = "/user/meal/friday";
+}
+
+function toSaturday() {
+  location.href = "/user/meal/saturday";
+}
+
+function toDay(day) {
+  location.href = "/user/meal/" + day;
+}
 // Get references to page elements
-$(".navSignup").on("click", function () {
+$(".navSignup").on("click", function() {
   console.log("hey");
   $.ajax({
     url: "/signup",
     type: "GET"
   });
 });
-$(".navLogin").on("click", function () {
+$(".navLogin").on("click", function() {
   $.ajax({
     url: "/login",
     type: "GET"
@@ -15,8 +47,7 @@ $(".navLogin").on("click", function () {
 
 // The API object contains methods for each kind of request we'll make
 const API = {
-
-  saveMeal: function (meal) {
+  saveMeal: function(meal) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -27,7 +58,7 @@ const API = {
     });
   },
 
-  deleteMeal: function (id) {
+  deleteMeal: function(id) {
     return $.ajax({
       url: "/api/meals/" + id,
       type: "DELETE"
@@ -36,12 +67,12 @@ const API = {
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
-const handleDeleteBtnClick = function () {
+const handleDeleteBtnClick = function() {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteMeal(idToDelete).then(function () {
+  API.deleteMeal(idToDelete).then(function() {
     console.log("deleted");
   });
 };
@@ -56,7 +87,7 @@ var modBtn = document.getElementById("modBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
-$("#modBtn").on("click", function () {
+$("#modBtn").on("click", function() {
   modal.style.display = "block";
 });
 
@@ -66,7 +97,7 @@ $("span").on("click", function() {
 });
 
 // When the user clicks anywhere outside of the modal, close it
-$(window).on("click", function (event) {
+$(window).on("click", function(event) {
   if (event.target === modal) {
     modal.style.display = "none";
   }
@@ -74,7 +105,7 @@ $(window).on("click", function (event) {
 //MODAL END
 
 //MAKING CUSTOM MEAL
-const handleMealFormSubmit = function (event) {
+const handleMealFormSubmit = function(event) {
   event.preventDefault();
 
   var meal = {
@@ -119,46 +150,52 @@ const handleMealFormSubmit = function (event) {
     return;
   }
 
-  API.saveMeal(meal).then(function () {
+  API.saveMeal(meal).then(function() {
     console.log("saved");
+    location.reload();
   });
 };
 
 //GET SUGGESTED MEALS
-const handleOptionsBtnClick = function () {
+const handleOptionsBtnClick = function() {
   return true;
 };
 
 //ADD SUGGESTED MEAL
-const handleAddMealClick = function (event) {
+const handleAddMealClick = function(event) {
   event.preventDefault();
   const mealId = $(this).attr("name");
   const meal = {
-    day: $(`#day-${mealId}`).val().trim(),
+    day: $(`#day-${mealId}`)
+      .val()
+      .trim(),
     mealName: $(`#title-${mealId}`).attr("value"),
     servings: 1,
     calories: $(`#cal-${mealId}`).attr("value"),
     fat: $(`#fat-${mealId}`).attr("value"),
     carbs: $(`#carbs-${mealId}`).attr("value"),
     protein: $(`#protein-${mealId}`).attr("value"),
-    mealOrder: $(`#order-${mealId}`).val().trim()
+    mealOrder: $(`#order-${mealId}`)
+      .val()
+      .trim()
   };
-  
-  API.saveMeal(meal).then(function () {
+
+  API.saveMeal(meal).then(function() {
     console.log("saved");
+    toDay(meal.day);
   });
 };
 
 //SEARCH MEAL
-const handleSearchBtnClick = function () {
+const handleSearchBtnClick = function() {
   return true;
 };
 
 //GET DAY FROM DAY BUTTONS
-const handleGetDayBtnClick = function (){
+const handleGetDayBtnClick = function() {
   event.preventDefault();
   const day = $(this).attr("name");
-}
+};
 
 // Add event listeners to the submit and delete buttons
 $("#creatMealBtn").on("click", handleMealFormSubmit);
