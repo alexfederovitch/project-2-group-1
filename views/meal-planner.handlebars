@@ -35,7 +35,7 @@
 		<div>
 
 			<a href="/api/meals/sunday"><div id="sunday" class="col sm-col-2 border day-btn center">S</div></a>
-			<a href="/api/meals/monday"><div id="monday" class="col sm-col-2 border day-btn center">M</div></a>               
+			<a href="/api/meals/monday"><div id="monday" class="col sm-col-2 border day-btn center">M</div></a>
 			<a href="/api/meals/tuesday"><div id="tuesday" class="col sm-col-2 border day-btn center">T</div></a>
 			<a href="/api/meals/wednesday"><div id="wednesday" class="col sm-col-2 border day-btn center">W</div></a>
 			<a href="/api/meals/thursday"><div id="thursday" class="col sm-col-2 border day-btn center">T</div></a>
@@ -44,7 +44,7 @@
 
 		</div>
 		<div>
-		<br><br><br>
+			<br><br><br>
 			<h3>Meals:</h3>
 			<ul id="meal-list" class="list-group">
 				{{#each meals}}
@@ -61,11 +61,7 @@
 				</li>
 				{{/each}}
 			</ul>
-			  <div class="center mb3">
-				<h2>Add Your Meal</h2>
-	<!-- Trigger/Open The Modal -->
-				<button id="modBtn">Open Custom Meal</button>
- 			 </div>
+
 		</div>
 	</div>
 
@@ -135,16 +131,20 @@
 						</label>
 					</div>
 			</div>
-			<div class="col sm-col-12 p1 border-box border">
-				<button type="submit" id="getOptionsBtn" class="align-middle">Generate New Meal Suggestions</button>
+			<div class="col sm-col-12 p1 border-box border center">
+				<button type="submit" id="getOptionsBtn" class="blue align-middle">Generate New Meal Suggestions</button>
 			</div>
 			</form>
 		</div>
 		<div>
-			<form id="meal-search" name="search-box" action="/api/meals/search" method="get">
+			<form class="center mb3" id="meal-search" name="search-box" action="/api/meals/search" method="get">
 				<input id="meal-query" type="text" size="25" placeholder="Search for your favorite meals" name="query">
-				<button type="submit" id="search-meal">Submit</button>
+				<button class="blue" type="submit" id="search-meal">Submit</button>
 			</form>
+			<div class="center mb3">
+				<!-- Trigger/Open The Modal -->
+				<button id="modBtn">Add a Custom Meal</button>
+			</div>
 		</div>
 		<div class="row">
 			<h3>Suggested Meals:</h3>
@@ -295,70 +295,76 @@
 
 
 
-<!------------- Modal Popup --------------->
-<section class="container mt1">
+	<!------------- Modal Popup --------------->
+	<section class="container mt1">
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
+		<!-- The Modal -->
+		<div id="myModal" class="modal">
 
-  <!-- Modal content -->
-	<div class="modal-content">
-		<span class="close">&times;</span>
-		<p>INPUT FOOD</p>
-			<form action="/action_page.php">
-			<h3>Day</h3>
-			<select id="day">
-				<option value="sunday">Sunday</option>
-				<option value="monday">Monday</option>
-				<option value="tuesday">Tuesday</option>
-				<option value="wednesday">Wednesday</option>
-				<option value="thursday">Thursday</option>
-				<option value="friday">Friday</option>
-				<option value="saturday">Saturday</option>
-			</select>
-			
-			<br><br>
-			<label class="h3" for="meal-name">Meal Name</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="Steak" id="mealName" name="meal-name" size="39" />
-			<br>
-			<label class="h3" for="servings">Servings</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="1" id="servings" name="servings" size="39" />
-			<br>
-			<label class="h3" for="calories">Calories</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="100"  id="calories" name="calories" size="39" />   
-			<br>
-			<label class="h3" for="fats">Fat</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="100" id="fats"  name="fats" size="39"/>   
-			<br>  
-			<label class="h3" for="carbs">Carbs</label><br>  <input type="text" class="mb2" style="max-width: 100%;" placeholder="100" id="carbs" name="carbs" size="39" />
-			<br>             
-			<label class="h3" for="proteins">Protein</label><br> <input  class="mb2" type="text" style="max-width: 100%;" placeholder="100" id="proteins" name="proteins" size="39" />
-			<br><br>
-				<h3>Type of Meal</h3>
-				<select id="order">
-				<option value="1">Snack Before Breakfast</option>
-				<option value="2">Breakfast</option>
-				<option value="3">Snack Before Lunch</option>
-				<option value="4">Lunch</option>
-				<option value="5">Snack before Dinner</option>
-				<option value="6">Dinner</option>
-				<option value="7">Latenight Snack</option>
-			</select> 
-			<br><br><br>             
-			<input type="submit" value="Add Meal" class="button" id="creatMealBtn"/>
-			</form>
-	</div>
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<p>INPUT FOOD</p>
+				<form action="/action_page.php">
+					<h3>Day</h3>
+					<select id="day">
+						<option value="sunday">Sunday</option>
+						<option value="monday">Monday</option>
+						<option value="tuesday">Tuesday</option>
+						<option value="wednesday">Wednesday</option>
+						<option value="thursday">Thursday</option>
+						<option value="friday">Friday</option>
+						<option value="saturday">Saturday</option>
+					</select>
 
-  
-</section>
-<!--Creates the popup body-->
+					<br><br>
+					<label class="h3" for="meal-name">Meal Name</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="Steak"
+					 id="mealName" name="meal-name" size="39" />
+					<br>
+					<label class="h3" for="servings">Servings</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="1"
+					 id="servings" name="servings" size="39" />
+					<br>
+					<label class="h3" for="calories">Calories</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="100"
+					 id="calories" name="calories" size="39" />
+					<br>
+					<label class="h3" for="fats">Fat</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="100"
+					 id="fats" name="fats" size="39" />
+					<br>
+					<label class="h3" for="carbs">Carbs</label><br> <input type="text" class="mb2" style="max-width: 100%;" placeholder="100"
+					 id="carbs" name="carbs" size="39" />
+					<br>
+					<label class="h3" for="proteins">Protein</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="100"
+					 id="proteins" name="proteins" size="39" />
+					<br><br>
+					<h3>Type of Meal</h3>
+					<select id="order">
+						<option value="1">Snack Before Breakfast</option>
+						<option value="2">Breakfast</option>
+						<option value="3">Snack Before Lunch</option>
+						<option value="4">Lunch</option>
+						<option value="5">Snack before Dinner</option>
+						<option value="6">Dinner</option>
+						<option value="7">Latenight Snack</option>
+					</select>
+					<br><br><br>
+					<input type="submit" value="Add Meal" class="button" id="creatMealBtn" />
+				</form>
+			</div>
+		</div>
+
+	</section>
+	<!--Creates the popup body-->
 
 
-    <!------------ footer ---------------->
-  <footer>
+	<!------------ footer ---------------->
+	<footer>
 		<div class="px2 py3 container">
 			<div class=" center">
 				<div class="col col-6">
 					<ul class="list-reset">
 						<li>
 							<p class="h3 m0">
-							   Contact
+								Contact
 							</p>
 						</li>
 						<li>
@@ -372,7 +378,7 @@
 						</li>
 					</ul>
 				</div>
-		  
+
 				<div class="col col-6">
 					<ul class="list-reset">
 						<li>
@@ -381,32 +387,32 @@
 							</p>
 						</li>
 						<li>
-								<a href="#" class="fa fa-facebook"></a>
-								  
-								<a href="#" class="fa fa-twitter"></a>
-	
-								<a href="#" class="fa fa-instagram"></a>
+							<a href="#" class="fa fa-facebook"></a>
+
+							<a href="#" class="fa fa-twitter"></a>
+
+							<a href="#" class="fa fa-instagram"></a>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 	</footer>
-    
-    <!------------ Mobile Menu ---------------->
+
+	<!------------ Mobile Menu ---------------->
 
 	<script>
-			function myFunction() {
-				var x = document.getElementById("myTopnav");
-				if (x.className === "topnav") {
-					x.className += " responsive";
-				} else {
-					x.className = "topnav";
-				}
+		function myFunction() {
+			var x = document.getElementById("myTopnav");
+			if (x.className === "topnav") {
+				x.className += " responsive";
+			} else {
+				x.className = "topnav";
 			}
-			$(document).on("click", ".eatBtn", function(){
-				$(this).css("background-color", "gray").text("Yummy!");
-			})
+		}
+		$(document).on("click", ".eatBtn", function () {
+			$(this).css("background-color", "gray").text("Yummy!");
+		})
 	</script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="/js/index.js"></script>
