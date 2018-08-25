@@ -126,11 +126,12 @@ $("#submitLogIn").on("click", function (event) {
             localStorage.setItem("username", result.username);
             localStorage.setItem("firstName", result.firstName);
             localStorage.setItem("currenWeight", result.currentWeight);
-               window.location.href = '/members/'+ localStorage.id
-        window.user = user;
-        //window.location.href = '/members/'+ localStorage.id
+            //window.location.href = '/members/'+ localStorage.id
+            window.user = user.user;  
+            window.location.href = `/members/${localStorage.id}`
 
-        })
+            //window.location.href = '/members/'+ localStorage.id
+           })
         
     })
     .catch(function (error) {
@@ -153,8 +154,9 @@ firebase.auth().onAuthStateChanged(function(user) {
             localStorage.setItem("username", result.username);
             localStorage.setItem("firstName", result.firstName);
             localStorage.setItem("currenWeight", result.currentWeight);
-                window.location.href = '/members/'+ localStorage.id
-        window.user = user;    //  
+                
+        window.user = user.user;    //  
+       window.location.href = '/members/'+ localStorage.id
         })
 
 
