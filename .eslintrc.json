@@ -2,7 +2,7 @@
     "env": {
         "browser": true,
         "commonjs": true,
-        "node": false
+        "node": true
     },
     "extends": "prettier",
     "plugins": [
@@ -17,7 +17,7 @@
         "no-extra-semi":"error",
         "no-func-assign": "error",
         "no-irregular-whitespace":"error",
-        "no-unreachable": "off",
+        "no-unreachable": "error",
         "curly": "error",
         "dot-notation": "error",
         "eqeqeq": "error",
@@ -30,18 +30,18 @@
             2
         ],
         "linebreak-style": [
-            "off",
+            "error",
             "unix"
         ],
         "quotes": [
-            "off",
+            "error",
             "double"
         ],
         "semi": [
-            "off",
+            "error",
             "always"
         ],
-        "prettier/prettier": "off"
+        "prettier/prettier": "error"
         
     }
 }
