@@ -30,13 +30,13 @@
 
 	<div class="col sm-col-6 p1 border-box border">
 		<div>
-			<div class="col sm-col-6 border day-btn center">S</div>
-			<div class="col sm-col-6 border day-btn center">M</div>
-			<div class="col sm-col-6 border day-btn center">T</div>
-			<div class="col sm-col-6 border day-btn center">W</div>
-			<div class="col sm-col-6 border day-btn center">T</div>
-			<div class="col sm-col-6 border day-btn center">F</div>
-			<div class="col sm-col-6 border day-btn center">S</div>
+			<div value="sunday" class="col sm-col-6 border day-btn center">S</div>
+			<div value="monday" class="col sm-col-6 border day-btn center">M</div>
+			<div value="tueday" class="col sm-col-6 border day-btn center">T</div>
+			<div value="wednesday" class="col sm-col-6 border day-btn center">W</div>
+			<div value="thursday" class="col sm-col-6 border day-btn center">T</div>
+			<div value="friday" class="col sm-col-6 border day-btn center">F</div>
+			<div value="saturday" class="col sm-col-6 border day-btn center">S</div>
 		</div>
 		<div>
 			<h3>Meals:</h3>
@@ -58,7 +58,7 @@
 				Get Started: Find Meals
 			</h3>
 			<div class="row">
-				<form id="meal-options" name="options" action="/api/options" method="get" class="col sm-col-12 p1 border-box border">
+				<form id="meal-options" name="options" action="/api/meals/options" method="get" class="col sm-col-12 p1 border-box border">
 					<div class="flex flex-wrap col sm-col-12 p1 border-box border mx-auto">
 						<div class="col sm-col-12 primary">
 							Indicate any dietary restriction:
@@ -124,8 +124,8 @@
 			</form>
 		</div>
 		<div>
-			<form>
-				<input type="text" size="25" placeholder="Search.." name="search">
+			<form id="meal-search" name="search-box" action="/api/meals/search" method="get">
+				<input id="meal-query" type="text" size="25" placeholder="Search for your favorite meals" name="query">
 				<button type="submit" id="search-meal">Submit</button>
 			</form>
 		</div>
@@ -133,7 +133,72 @@
 			<h3>Suggested Meals:</h3>
 			<div>
 				<span id="search-header"></span>
+<ul>
+					{{#each search}}
+					<li>
+						
+							<div class="clearfix mxn2 border">
+								<div>
+									<div class="sm-col sm-col-6 md-col-5 lg-col-4 px2">
+										<h3 name="title">{{mealType}}</h3>
+										<img src={{image}} class="mb2" />
+									</div>
+									<div class="sm-col sm-col-6 md-col-7 lg-col-8 px2">
+										<div class="border">
+											<h3 id="title-{{spoontacularID}}" value="{{mealName}}">{{mealName}}</h3>
+											<a href={{url}} class="btn btn-primary align-middle" target="_blank">More Info</a>
+											<div class="col sm-col-12 flex flex-justify">
+												<div id="cal-{{spoontacularID}}" value="{{calories}}">Calories: {{calories}} </div>
+												<div id="fat-{{spoontacularID}}" value="{{calories}}">Fat: {{fat}} </div>
+												<div id="carbs-{{spoontacularID}}" value="{{calories}}">Carbs: {{carbs}} </div>
+												<div id="protein-{{spoontacularID}}" value="{{calories}}">Protein: {{protein}} </div>
+											</div>
+										</div>
+									</div>
+								</div>
 
+								<div class="border">
+										<div class="col sm-col-12 flex flex-start align-middle">
+											<div>
+												<h4>Eat on:</h4>
+												<select id="day-{{spoontacularID}}">
+													<option value="sunday ">Sunday</option>
+													<option value="monday ">Monday</option>
+													<option value="tuesday ">Tuesday</option>
+													<option value="wednesday ">Wednesday</option>
+													<option value="thursday ">Thursday</option>
+													<option value="friday ">Friday</option>
+													<option value="saturday ">Saturday</option>
+												</select>
+											</div>
+											<div>
+												<h4>As:</h4>
+												<select id="order-{{spoontacularID}}">
+													<option value="1 ">Snack Before Breakfast</option>
+													<option value="2 ">Breakfast</option>
+													<option value="3 ">Snack Before Lunch</option>
+													<option value="4 ">Lunch</option>
+													<option value="5 ">Snack before Dinner</option>
+													<option value="6 ">Dinner</option>
+													<option value="7 ">Latenight Snack</option>
+												</select>
+												<div>
+													  <button type="button" class="add-meal-btn btn btn-primary block" name={{spoontacularID}} >Add to Calendar</button>
+													{{!-- <input name={{spoontacularID}} value="Add to Calendar" class="add-meal btn btn-primary block" /> --}}
+
+												</div>
+
+											</div>
+
+										</div>
+								</div>
+
+							</div>
+					
+					</li>
+					{{/each}}
+
+				</ul>
 			</div>
 			<div>
 				<span id="breakfast-header"></span>

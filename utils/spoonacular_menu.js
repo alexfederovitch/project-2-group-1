@@ -1,4 +1,4 @@
-const request = require('request');
+const request = require("request");
 
 module.exports = function (diet, avoid, callback) {
     let targetCal = 2000;
@@ -20,7 +20,7 @@ module.exports = function (diet, avoid, callback) {
             }
         };
 
-        request.get(mains, function (error, response, body) {
+        request.get(mains, function (_,_, body) {
             let mealPlan = JSON.parse(body);
 
             for (n of mealPlan.items) {
