@@ -13,10 +13,11 @@
                 </a>
                 <nav class="topnav" id="myTopnav">
                     <ul> 
-                         <li class="link-class"><a href="meal-planner.html">Meal Planner</a></li>
-                         <li class="link-class"><a href="profile.html">Profile</a></li>
+                         <li class="link-class"><a href="/meal-planner">Meal Planner</a></li>
+                         <li class="link-class"><a href="/profile">Profile</a></li>
                          <li class="link-class"><a href="#">Account Settings</a></li>
                          <li class="link-class"><a id="logOut"  >Sign Out</a></li>
+
                     </ul>
                 </nav>
             </div>
@@ -29,7 +30,7 @@
 
    <section class="container px2">
             <div class="mx-auto center">
-                <h1>Hey <span>"Name with JS"</span>! This is today's progess.</h1>
+                <h1>Hey <span>{{firstName}}</span>! This is {{day}}'s progess.</h1>
                 <br> 
             </div>
 
@@ -38,14 +39,14 @@
 
                     <div class="sm-col sm-col-4">
                         <span class="ml2">Calories</span><br>
-                        <span class="ml2">Calories Ate</span>
-                        <span class="ml2">Calories Goal</span>
+                        <span class="ml2">Calories Eaten: {{caloriesEaten}}</span>
+                        <span class="ml2">Calories Goal: {{calories}}</span>
 
                     </div>
 
                     <div class="sm-col sm-col-8">
                         <div class="m2" style="border: 1px solid #a3a3a3;">
-                            <div id="progress-bar-calories" style="height:24px; width:25%">  
+                            <div id="progress-bar-calories" style="height:24px; width:{{calPercent}}">  
     
                             </div>
                         </div>
@@ -55,13 +56,13 @@
                 <div class="border clearfix mt1 mb1">
                     <div class="sm-col sm-col-4">
                         <span class="ml2">Protein</span><br>
-                        <span class="ml2">Protein Ate</span>
-                        <span class="ml2">Protein Goal</span>
+                        <span class="ml2">Protein Eaten: {{proteinEaten}}</span>
+                        <span class="ml2">Protein Goal: {{protein}}</span>
                     </div>
 
                     <div class="sm-col sm-col-8">
                         <div class="m2" style="border: 1px solid #a3a3a3;">
-                            <div id="progress-bar-protein" style="height:24px; width:80%">  
+                            <div id="progress-bar-protein" style="height:24px; width:{{proteinPercent}}">  
     
                             </div>
                         </div>
@@ -72,12 +73,12 @@
                 <div class="border clearfix mt1 mb1">
                     <div class="sm-col sm-col-4">
                         <span class="ml2">Carbs</span><br>
-                        <span class="ml2">Carbs Ate</span>
-                        <span class="ml2">Carbs Goal</span>
+                        <span class="ml2">Carbs Eaten: {{carbsEaten}}</span>
+                        <span class="ml2">Carbs Goal: {{carbs}}</span>
                     </div>
                     <div class="sm-col sm-col-8">
                         <div class="m2" style="border: 1px solid #a3a3a3;">
-                            <div id="progress-bar-carbs" style="height:24px; width:30%">  
+                            <div id="progress-bar-carbs" style="height:24px; width:{{carbPercent}}">  
     
                             </div>
                         </div>
@@ -87,12 +88,12 @@
                 <div class="border clearfix mt1 mb1">
                     <div class="sm-col sm-col-4">
                         <span class="ml2">Fats</span><br>
-                        <span class="ml2">Fats Ate</span>
-                        <span class="ml2">Fats Goal</span>
+                        <span class="ml2">Fats Eaten: {{fatEaten}}</span>
+                        <span class="ml2">Fats Goal: {{fats}}</span>
                     </div>
                     <div class="sm-col sm-col-8">
                         <div class="m2" style="border: 1px solid #a3a3a3;">
-                            <div id="progress-bar-fats" style="height:24px; width:10%">  
+                            <div id="progress-bar-fats" style="height:24px; width:{{fatPercent}}">  
     
                             </div>
                         </div>

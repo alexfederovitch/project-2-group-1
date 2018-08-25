@@ -1,8 +1,22 @@
 // Get references to page elements
+$(".navSignup").on("click", function () {
+  console.log("hey");
+  $.ajax({
+    url: "/signup",
+    type: "GET"
+  });
+});
+$(".navLogin").on("click", function () {
+  $.ajax({
+    url: "/login",
+    type: "GET"
+  });
+});
 
 // The API object contains methods for each kind of request we'll make
-var API = {
-  saveMeal: function(meal) {
+const API = {
+
+  saveMeal: function (meal) {
     return $.ajax({
       headers: {
         "Content-Type": "application/json"
@@ -13,7 +27,7 @@ var API = {
     });
   },
 
-  deleteMeal: function(id) {
+  deleteMeal: function (id) {
     return $.ajax({
       url: "/api/meals/" + id,
       type: "DELETE"
@@ -22,12 +36,12 @@ var API = {
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
-var handleDeleteBtnClick = function() {
+const handleDeleteBtnClick = function () {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteMeal(idToDelete).then(function() {
+  API.deleteMeal(idToDelete).then(function () {
     console.log("deleted");
   });
 };
@@ -42,25 +56,25 @@ var modBtn = document.getElementById("modBtn");
 var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal
-modBtn.onclick = function() {
+$("#modBtn").on("click", function () {
   modal.style.display = "block";
-};
+});
 
 // When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+$("span").on("click",".close", function () {
   modal.style.display = "none";
-};
+});
 
 // When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
+$(window).on("click", function (event) {
   if (event.target === modal) {
     modal.style.display = "none";
   }
-};
+});
 //MODAL END
 
 //MAKING CUSTOM MEAL
-var handleMealFormSubmit = function(event) {
+const handleMealFormSubmit = function (event) {
   event.preventDefault();
 
   var meal = {
@@ -105,11 +119,52 @@ var handleMealFormSubmit = function(event) {
     return;
   }
 
-  API.saveMeal(meal).then(function() {
+  API.saveMeal(meal).then(function () {
     console.log("saved");
   });
 };
 
+//GET SUGGESTED MEALS
+const handleOptionsBtnClick = function () {
+  return true;
+};
+
+//ADD SUGGESTED MEAL
+const handleAddMealClick = function (event) {
+  event.preventDefault();
+  const mealId = $(this).attr("name");
+  const meal = {
+    day: $(`#day-${mealId}`).val().trim(),
+    mealName: $(`#title-${mealId}`).attr("value"),
+    servings: 1,
+    calories: $(`#cal-${mealId}`).attr("value"),
+    fat: $(`#fat-${mealId}`).attr("value"),
+    carbs: $(`#carbs-${mealId}`).attr("value"),
+    protein: $(`#protein-${mealId}`).attr("value"),
+    mealOrder: $(`#order-${mealId}`).val().trim()
+  };
+  
+  API.saveMeal(meal).then(function () {
+    console.log("saved");
+  });
+};
+
+//SEARCH MEAL
+const handleSearchBtnClick = function () {
+  return true;
+};
+
+//GET DAY FROM DAY BUTTONS
+const handleGetDayBtnClick = function (){
+  event.preventDefault();
+  const day = $(this).attr("name");
+}
+
 // Add event listeners to the submit and delete buttons
 $("#creatMealBtn").on("click", handleMealFormSubmit);
 $("#deleteMealBtn").on("click", handleDeleteBtnClick);
+$("#meal-options").on("click", handleOptionsBtnClick);
+$("#meal-search").on("click", handleSearchBtnClick);
+$(document).on("click", ".add-meal-btn", handleAddMealClick);
+$(".day-btn").on("click", handleGetDayBtnClick);
+

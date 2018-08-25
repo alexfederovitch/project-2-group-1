@@ -1,14 +1,20 @@
 require("dotenv").config();
-var express = require("express");
-var bodyParser = require("body-parser");
-var exphbs = require("express-handlebars");
+const express = require("express");
+const bodyParser = require("body-parser");
+const exphbs = require("express-handlebars");
 //'Requires' for passport setup
-var env = require("dotenv").load();
+const env = require("dotenv").load();
+const flash = require("connect-flash");
+const session = require("express-session");
+const passport = require("passport");
 
-var db = require("./models");
+//Load 'Passport" strategies
+// require('./config/passport')(passport);
 
-var app = express();
-var PORT = process.env.PORT || 3000;
+const db = require("./models");
+
+const app = express();
+const PORT = process.env.PORT || 3000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
