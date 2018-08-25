@@ -5,26 +5,30 @@ spoonSearch = require("../utils/spoonacular_search.js");
 
 const { check, validationResult } = require("express-validator/check");
 
-module.exports = function (app) {
-
+module.exports = function(app) {
   // Get Meal Options from Spoontacular API
+<<<<<<< HEAD
   app.get("/api/meals/options", function (req, res) {
+=======
+  app.get("/api/options", function(req, res) {
+>>>>>>> 8f0333a4ecdb40c385a1ec3bf01a053196797283
     let body = req.query;
     const diet = [];
     const avoid = [];
     for (const n in body) {
       if (n.includes("diet")) {
-        diet.push(body[n])
+        diet.push(body[n]);;
       } else {
-        avoid.push(body[n])
+        avoid.push(body[n]);;
       }
     }
-    spoonMenu(diet.join(","), avoid.join(","), function (options) {
+    spoonMenu(diet.join(","), avoid.join(","), function(options) {
       res.render("meal-planner", { options });
-    })
+    });;
   });
 
   //Get meal search from Spoontacular API
+<<<<<<< HEAD
   app.get("/api/meals/search", function (req, res) {
     let query = [];
     console.log(req.query)
@@ -32,46 +36,57 @@ module.exports = function (app) {
             query.push(req.query[n]);
       }
     spoonSearch(query.join(","), function (search) {
+=======
+  app.get("/api/search", function(req, res) {
+    let body = req.query;
+    console.log(body);;
+
+    spoonSearch(query, function(search) {
+>>>>>>> 8f0333a4ecdb40c385a1ec3bf01a053196797283
       res.render("meal-planner", { search });
-    })
+    });;
   });
 
   // Get all examples
+<<<<<<< HEAD
   app.get("/api/meals", function (_, res) {
+=======
+  app.get("/api/meals", function(req, res) {
+>>>>>>> 8f0333a4ecdb40c385a1ec3bf01a053196797283
     db.meals
       .findAll({ order: [["mealOrder", "ASC"]] })
-      .then(function (userMeals) {
+      .then(function(userMeals) {
         res.json(userMeals);
       });
   });
 
-  app.get("/api/meals/:day", function (req, res) {
+  app.get("/api/meals/:day", function(req, res) {
     db.meals
       .findAll({ where: { day: req.params.day } })
-      .then(function (userMeals) {
+      .then(function(userMeals) {
         res.json(userMeals);
       });
   });
 
   // Create a new example
-  app.post("/api/meals", function (req, res) {
-    db.meals.create(req.body).then(function (userMeals) {
+  app.post("/api/meals", function(req, res) {
+    db.meals.create(req.body).then(function(userMeals) {
       res.json(userMeals);
     });
   });
 
   // Delete an example by id
-  app.delete("/api/meals/:id", function (req, res) {
+  app.delete("/api/meals/:id", function(req, res) {
     db.meals
       .destroy({ where: { id: req.params.id } })
-      .then(function (userMeals) {
+      .then(function(userMeals) {
         res.json(userMeals);
       });
   });
 
   //////////////////////////////////////////////////////////////////////////
   // Create a new 'User'
-  app.post("/api/newUser", [check("email").isEmail()], function (req, res) {
+  app.post("/api/newUser", [check("email").isEmail()], function(req, res) {
     var newUser = {
       username: req.body.username,
       pw1: req.body.password,
@@ -100,14 +115,14 @@ module.exports = function (app) {
     }
 
     db.Users.create(newUser)
-      .then(function (dbUsers) {
+      .then(function(dbUsers) {
         console.log("works here");
         res.json({
           dbUsers: dbUsers,
           isworking: true
         });
-      })
-      .catch(function (err) {
+      });
+      .catch(function(err) {
         // handle error
         //res.json(err);
         //console.log(err)
