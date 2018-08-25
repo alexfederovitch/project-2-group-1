@@ -47,7 +47,7 @@ module.exports = function(sequelize, DataTypes) {
       }
     },
     currentWeight: {
-      type: DataTypes.TINYINT,
+      type: DataTypes.MEDIUMINT,
       allowNull: false,
       validate: {
         len: [2, 3]
@@ -55,35 +55,35 @@ module.exports = function(sequelize, DataTypes) {
     },
     //this has to be a boolean value
     weightGoal: {
-      type: DataTypes.TINYINT,
+      type: DataTypes.MEDIUMINT,
       allowNull: true,
       validate: {
         len: [2, 3]
       }
     },
     caloricBudget: {
-      type: DataTypes.TINYINT,
+      type: DataTypes.MEDIUMINT,
       allowNull: true,
       validate: {
         len: [4, 6]
       }
     },
     carbsBudget: {
-      type: DataTypes.TINYINT,
+      type: DataTypes.MEDIUMINT,
       allowNull: true,
       validate: {
         len: [0, 8]
       }
     },
     fatsBudget: {
-      type: DataTypes.TINYINT,
+      type: DataTypes.MEDIUMINT,
       allowNull: true,
       validate: {
         len: [0, 8]
       }
     },
     proteingBudget: {
-      type: DataTypes.TINYINT,
+      type: DataTypes.MEDIUMINT,
       allowNull: true,
       validate: {
         len: [2, 8]
@@ -98,7 +98,6 @@ module.exports = function(sequelize, DataTypes) {
       onDelete: "cascade"
     });
   };
+
   return Users;
 };
-
-module.exports.createUser = function(newUser, callback) {};

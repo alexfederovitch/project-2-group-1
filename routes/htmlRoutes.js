@@ -7,11 +7,11 @@ module.exports = function(app) {
   });
   //load Signup page
   app.get("/signup", function(req, res, next) {
-    res.render("create-account", { layout: true });
+    res.render("create-account");
   });
   //load Login page
   app.get("/login", function(req, res, next) {
-    res.render("login", { layout: true });
+    res.render("login");
   });
 
   //LOAD meal planner
@@ -191,6 +191,11 @@ module.exports = function(app) {
                 });
             });
         });
+      });
+  });
+  app.get("/members/:id", function(req, res) {
+    res.render("profile");
+  });
       }); 
     });
   
@@ -282,4 +287,8 @@ module.exports = function(app) {
   app.get("*", function(_req, res) {
     res.render("404");
   });
+//////////////////////////////////////////////////////////////////////////////////
+  // Here we've add our isAuthenticated middleware to this route.
+  // If a user who is not logged in tries to access this route they will be redirected to the signup page
+
 };

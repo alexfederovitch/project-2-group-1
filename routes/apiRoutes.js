@@ -69,8 +69,17 @@ module.exports = function(app) {
   });
 
   //////////////////////////////////////////////////////////////////////////
-  // Create a new 'User'
-  app.post("/api/newUser", [check("email").isEmail()], function(req, res) {
+  //
+  app.get("/api/users/:email", function(req, res) {
+    console.log("this happens in the apiroutes.js");
+    console.log(req);
+     db.Users.findAll({where:{email:req.params.email}}).then(function(result){
+       res.json(result);
+     });
+  });
+  //////////////////// Create a new 'User'
+  // app.post("/api/newUser", [check("email").isEmail()], function(req, res) {
+  app.post("/api/newUser", function(req, res) {
     var newUser = {
       username: req.body.username,
       pw1: req.body.password,
@@ -86,21 +95,20 @@ module.exports = function(app) {
     //console.log("this happens in the app.post in the apiRouts.js");
 
     //validation checks
-    const errors = validationResult(req);
-    if (!errors.isEmpty()) {
-      console.log("something went wrong");
-      //console.log(req._validationErrors)
-      const errVal = req._validationErrors[0].param;
-      //console.log(req._validationErrors[0].value)
-      const errMsg = req._validationErrors[0].msg;
-      console.log(`Error: ${errVal} - ${errMsg}`);
+    // const errors = validationResult(req);
+    // if (!errors.isEmpty()) {
+    //   console.log("something went wrong");
+    //   //console.log(req._validationErrors)
+    //   const errVal = req._validationErrors[0].param;
+    //   //console.log(req._validationErrors[0].value)
+    //   const errMsg = req._validationErrors[0].msg;
+    //   console.log(`Error: ${errVal} - ${errMsg}`);
 
-      return res.status(422).json({ errors: errors.array() });
-    }
+    //   return res.status(422).json({ errors: errors.array() });
+    // }
 
     db.Users.create(newUser)
       .then(function(dbUsers) {
-        console.log("works here");
         res.json({
           dbUsers: dbUsers,
           isworking: true
@@ -109,10 +117,12 @@ module.exports = function(app) {
       .catch(function(err) {
         // handle error
         //res.json(err);
-        //console.log(err)
+        console.log(err);
         res.json({
-          isworking: false
+          isworking: false,
+          msg: "Username and/or email in use"
         });
       });
   });
+  /////////////////////////////////////////////////////
 };

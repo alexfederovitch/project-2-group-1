@@ -30,13 +30,13 @@
                 <br> 
             
                 <form>
-                    <label class="h3" for="username">Username</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="Something"  id="username" name="username" size="39" />   
+                    <label class="h3" for="email">Email</label><br> <input class="mb2" type="text" style="max-width: 100%;" placeholder="email"  id="email" name="email" size="39" />   
                     <br>
                         
-                    <label class="h3" for="password">Password</label><br> <input  class="mb2" type="text" style="max-width: 100%;" placeholder="Somethinelse" id="password" name="password" size="39" />
+                    <label class="h3" for="password">Password</label><br> <input  class="mb2" type="password" style="max-width: 100%;" placeholder="password" id="password" name="password" size="39" />
                     <br> 
                         
-                     <input type="submit" value="Log In" class="button" id="button"/>
+                     <button type="submit" class="btn btn-primary" id="submitLogIn">Login</button>
                 </form>
                       
             </div>
@@ -97,4 +97,68 @@
                 x.className = "topnav";
             }
         }
+</script>
+
+<script>
+
+$("#submitLogIn").on("click", function (event) {
+    // prevent page from refreshing when form tries to submit itself
+    event.preventDefault();
+    // Capture user inputs and store them into variables
+    var email = $("#email").val().trim();
+    var password = $("#password").val().trim();
+    console.log(email);
+    console.log(password);
+    // Clear sessionStorage
+    //sessionStorage.clear();
+    // Store all content into sessionStorage
+    //sessionStorage.setItem("email", email);
+
+    firebase.auth().signInWithEmailAndPassword(email, password).
+    then(function(user){
+        console.log("sbviueshouse;ovi")
+        console.log(user.user.email)
+                $.get("/api/users/"+user.user.email).then(function(result){
+                    console.log("this in here")
+                    console.log(result)
+            localStorage.setItem("id", result.id);
+            localStorage.setItem("email", result.email);
+            localStorage.setItem("username", result.username);
+            localStorage.setItem("firstName", result.firstName);
+            localStorage.setItem("currenWeight", result.currentWeight);
+            //window.location.href = '/members/'+ localStorage.id
+            window.user = user.user;  
+            window.location.href = `/members/${localStorage.id}`
+
+            //window.location.href = '/members/'+ localStorage.id
+           })
+        
+    })
+    .catch(function (error) {
+        alert(error.message);
+    })
+});
+
+
+
+
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        console.log(user)
+        console.log("happens in the create account html")
+        //console.log(firebase.auth().currentUser)
+        $.get("/api/users/"+user.user.email).then(function(result){
+
+            localStorage.setItem("id", result.id);
+            localStorage.setItem("email", result.email);
+            localStorage.setItem("username", result.username);
+            localStorage.setItem("firstName", result.firstName);
+            localStorage.setItem("currenWeight", result.currentWeight);
+                
+        window.user = user.user;    //  
+       window.location.href = '/members/'+ localStorage.id
+        })
+
+
+    }})
 </script>
