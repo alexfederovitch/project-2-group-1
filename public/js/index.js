@@ -61,7 +61,7 @@ $("#modBtn").on("click", function () {
 });
 
 // When the user clicks on <span> (x), close the modal
-$("span").on("click",".close", function () {
+$("span").on("click", function() {
   modal.style.display = "none";
 });
 
@@ -167,4 +167,3 @@ $("#meal-options").on("click", handleOptionsBtnClick);
 $("#meal-search").on("click", handleSearchBtnClick);
 $(document).on("click", ".add-meal-btn", handleAddMealClick);
 $(".day-btn").on("click", handleGetDayBtnClick);
-

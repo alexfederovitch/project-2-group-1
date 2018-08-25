@@ -325,4 +325,13 @@ nav {
     text-decoration: none;
     cursor: pointer;
 }
+
+
+.popup-overlay {
+visibility:hidden;
+}
+
+.popup-content {
+visibility:hidden;
+}
 /*MODAL STYLE END*/
