@@ -127,14 +127,14 @@
 
 <script>
 
-    firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        console.log(user)
-        console.log("happens in the create account html")
-        //console.log(firebase.auth().currentUser)
-        window.location = '/members/'+ localStorage.id; 
-        window.user = user;
-    }
-});
+ //   firebase.auth().onAuthStateChanged(function(user) {
+ //   if (user) {
+ //       console.log(user)
+ //       console.log("happens in the create account html")
+ //       //console.log(firebase.auth().currentUser)
+ //       window.location = '/members/'+ localStorage.id; 
+ //       window.user = user;
+ //   }
+ //   });
 </script>
 

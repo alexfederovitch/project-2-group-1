@@ -114,25 +114,24 @@ $("#submitLogIn").on("click", function (event) {
     // Store all content into sessionStorage
     //sessionStorage.setItem("email", email);
 
-    firebase.auth().signInWithEmailAndPassword(email, password).
-    then(function(user){
-        console.log("sbviueshouse;ovi")
-        console.log(user.user.email)
-                $.get("/api/users/"+user.user.email).then(function(result){
-                    console.log("this in here")
-                    console.log(result)
-            localStorage.setItem("id", result.id);
-            localStorage.setItem("email", result.email);
-            localStorage.setItem("username", result.username);
-            localStorage.setItem("firstName", result.firstName);
-            localStorage.setItem("currenWeight", result.currentWeight);
-            //window.location.href = '/members/'+ localStorage.id
-            window.user = user.user;  
-            window.location.href = `/members/${localStorage.id}`
-
-            //window.location.href = '/members/'+ localStorage.id
-           })
-        
+  firebase.auth().signInWithEmailAndPassword(email, password).
+  then(function(user){
+      console.log("sbviueshouse;ovi")
+      console.log(user.user.email)
+   $.get("/api/users/:"+user.user.email).then(function(result){
+           console.log("this in here");
+           console.log(result);
+           localStorage.setItem("id", result.id);
+           localStorage.setItem("email", result.email);
+           localStorage.setItem("username", result.username);
+           localStorage.setItem("firstName", result.firstName);
+           localStorage.setItem("currenWeight", result.currentWeight);
+           window.location.href = '/members/'+ localStorage.id
+           window.user = user.user;  
+           //window.location.href = `/profile/${localStorage.id}`    
+           //window.location.href = '/api/members/'+localStorage.id
+          //res.render("profile")
+          })     
     })
     .catch(function (error) {
         alert(error.message);
@@ -143,21 +142,20 @@ $("#submitLogIn").on("click", function (event) {
 
 
 firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        console.log(user)
-        console.log("happens in the create account html")
+   if (user) {
+    //    console.log(user)
+     //   console.log("happens in the create account html")
         //console.log(firebase.auth().currentUser)
-        $.get("/api/users/"+user.user.email).then(function(result){
-
-            localStorage.setItem("id", result.id);
-            localStorage.setItem("email", result.email);
-            localStorage.setItem("username", result.username);
-            localStorage.setItem("firstName", result.firstName);
-            localStorage.setItem("currenWeight", result.currentWeight);
-                
-        window.user = user.user;    //  
-       window.location.href = '/members/'+ localStorage.id
-        })
+       $.get("/api/users/"+user.user.email).then(function(result){
+           localStorage.setItem("id", result.id);
+           localStorage.setItem("email", result.email);
+           localStorage.setItem("username", result.username);
+           localStorage.setItem("firstName", result.firstName);
+           localStorage.setItem("currenWeight", result.currentWeight);
+               
+            window.user = user.user;    
+            window.location.href = `/api/users/${localStorage.id}` 
+       })
 
 
     }})

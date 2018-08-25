@@ -77,6 +77,8 @@ module.exports = function (app) {
       res.json(result);
     });
   });
+  //////////////////////////////////////////////////////////////
+  
   //////////////////// Create a new 'User'
   // app.post("/api/newUser", [check("email").isEmail()], function(req, res) {
   app.post("/api/newUser", function (req, res) {
