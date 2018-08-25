@@ -13,7 +13,12 @@ module.exports = function (app) {
   app.get("/login", function (req, res, next) {
     res.render("login");
   });
-
+/////////////////////////////////////
+  //load Login page
+  app.get("/members/:id", function (req, res, next) {
+    res.render("profile");
+  });
+////////////////////////////////////
   //LOAD meal planner
   app.get("/user/meal", function (req, res) {
     //Querying the Users table
