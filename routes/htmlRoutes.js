@@ -20,7 +20,7 @@ module.exports = function(app) {
     db.Users.findAll({
       where: { id: 1 }
     }).then(function(users) {
-      let userName = users[0].username;
+      let userName = users[0].userName;
       let userNameLnk = userName + "/meal";
       // console.log(users[0].username);
       //Querying the meals table
