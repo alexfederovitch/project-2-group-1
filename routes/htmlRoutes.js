@@ -79,7 +79,7 @@ module.exports = function(app) {
                             meals: meals,
                             userNameLnk: userNameLnk,
                             firstName: users[0].firstName,
-                            day: meals[0].day,
+                            day: req.params.day,
                             calories: caloricBudget,
                             caloriesEaten: caloriesEaten,
                             calPercent: calPercent,
@@ -235,7 +235,7 @@ module.exports = function(app) {
                         res.render("profile", {
                           //Handlebars values
                           firstName: users[0].firstName,
-                          day: meals[0].day,
+                          day: req.params.day,
                           calories: caloricBudget,
                           caloriesEaten: caloriesEaten,
                           calPercent: calPercent,
