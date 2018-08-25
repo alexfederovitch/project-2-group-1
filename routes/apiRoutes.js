@@ -5,7 +5,7 @@ spoonSearch = require("../utils/spoonacular_search.js");
 
 const { check, validationResult } = require("express-validator/check");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Get Meal Options from Spoontacular API
   app.get("/api/meals/options", function (req, res) {
     let body = req.query;
@@ -18,7 +18,7 @@ module.exports = function(app) {
         avoid.push(body[n]);;
       }
     }
-    spoonMenu(diet.join(","), avoid.join(","), function(options) {
+    spoonMenu(diet.join(","), avoid.join(","), function (options) {
       res.render("meal-planner", { options });
     });;
   });
@@ -28,8 +28,8 @@ module.exports = function(app) {
     let query = [];
     console.log(req.query)
     for (const n in req.query) {
-            query.push(req.query[n]);
-      }
+      query.push(req.query[n]);
+    }
     spoonSearch(query.join(","), function (search) {
       res.render("meal-planner", { search });
     });;
@@ -39,47 +39,48 @@ module.exports = function(app) {
   app.get("/api/meals", function (_, res) {
     db.meals
       .findAll({ order: [["mealOrder", "ASC"]] })
-      .then(function(userMeals) {
+      .then(function (userMeals) {
         res.json(userMeals);
       });
   });
 
-  app.get("/api/meals/:day", function(req, res) {
+  app.get("/api/meals/:day", function (req, res) {
     db.meals
       .findAll({ where: { day: req.params.day } })
-      .then(function(userMeals) {
+      .then(function (userMeals) {
         res.json(userMeals);
       });
   });
 
   // Create a new example
-  app.post("/api/meals", function(req, res) {
-    db.meals.create(req.body).then(function(userMeals) {
+  app.post("/api/meals", function (req, res) {
+    db.meals.create(req.body).then(function (userMeals) {
       res.json(userMeals);
     });
   });
 
   // Delete an example by id
-  app.delete("/api/meals/:id", function(req, res) {
+  app.delete("/api/meals/:id", function (req, res) {
     db.meals
       .destroy({ where: { id: req.params.id } })
-      .then(function(userMeals) {
+      .then(function (userMeals) {
         res.json(userMeals);
       });
   });
 
   //////////////////////////////////////////////////////////////////////////
   //
-  app.get("/api/users/:email", function(req, res) {
+  app.get("/api/users/:email", function (req, res) {
     console.log("this happens in the apiroutes.js");
     console.log(req);
-     db.Users.findAll({where:{email:req.params.email}}).then(function(result){
-       res.json(result);
-     });
+    db.Users.findAll({ where: { email: req.params.email } }).then(function (result) {
+      res.json(result);
+    });
   });
   //////////////////// Create a new 'User'
   // app.post("/api/newUser", [check("email").isEmail()], function(req, res) {
-  app.post("/api/newUser", function(req, res) {
+  app.post("/api/newUser", function (req, res) {
+    console.log(req.body)
     var newUser = {
       username: req.body.username,
       pw1: req.body.password,
@@ -90,7 +91,7 @@ module.exports = function(app) {
       currentWeight: req.body.currentWeight,
       goal: req.body.goal
     };
-    console.log(newUser);
+    console.log("test"+newUser);
     //console.log(res);
     //console.log("this happens in the app.post in the apiRouts.js");
 
@@ -108,13 +109,13 @@ module.exports = function(app) {
     // }
 
     db.Users.create(newUser)
-      .then(function(dbUsers) {
+      .then(function (dbUsers) {
         res.json({
           dbUsers: dbUsers,
           isworking: true
         });
       })
-      .catch(function(err) {
+      .catch(function (err) {
         // handle error
         //res.json(err);
         console.log(err);
